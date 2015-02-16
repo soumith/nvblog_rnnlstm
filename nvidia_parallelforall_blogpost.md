@@ -87,14 +87,9 @@ After they are trained, given an input, they treat it no differently when shown 
 However, to tackle certain problems, you need to look at past experiences and give a different answer.
 
 If you send word by word into a convolution network, asking it to predict the next word, it will do so, but without any notion of current context.
-To understand why context is important, look at this example of predicting the next word:
+To understand why context is important, look at this example of predicting the next word, given just the previous word:
 
-I _____ -> shall
-shall ____ -> do
-do ____ -> you
-you ____ -> are
-are -> happy
-"I shall do you are happy"
+![simplePredict](NLP-convnet.png)
 
 Clearly, without context, you can produce sentences that make no sense.
 
