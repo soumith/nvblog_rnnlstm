@@ -82,20 +82,21 @@ ConvNets for NLP, from Collobert et. a. (2011)
 
 ####Recurrent Neural Networks (In Progress)
 
-Convolution Neural Networks --and more generally, feedforward neural networks-- do not traditionally have a notion of time or experience. 
+Convolution Neural Networks --and more generally, feedforward neural networks-- do not traditionally have a notion of time or experience unless you explicitly pass samples from the past as input.
 After they are trained, given an input, they treat it no differently when shown the first time or the 100th time.
 However, to tackle certain problems, you need to look at past experiences and give a different answer.
 
-If you send word by word into a convolution network, asking it to predict the next word, it will do so, but without any notion of current context.
+If you send word by word into a feed-forward network, asking it to predict the next word, it will do so, but without any notion of current context.
 To understand why context is important, look at this example of predicting the next word, given just the previous word:
 
 ![simplePredict](NLP-contextless.gif)
 
 Clearly, without context, you can produce sentences that make no sense.
 
-You can introduce the concept of context in feed forward networks, but it is much more natural to add a recurrent connection.
+You can have context in feed forward networks, but it is much more natural to add a recurrent connection.
+A Recurrent neural network introduces this concept of giving yourself feedback of past experiences.
 
-A Recurrent neural network introduces this concept of giving yourself feedback of past experiences. Apart from all the neurons in the network, it keeps a hidden state that changes as it sees different inputs. This hidden state is analogous to short-term memory.
+Apart from all the neurons in the network, it keeps a hidden state that changes as it sees different inputs. This hidden state is analogous to short-term memory.
 
 [ figure of recurrent neural networks  for text ]
 
