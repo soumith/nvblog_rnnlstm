@@ -129,7 +129,7 @@ However, it known that LSTM outperforms conventional RNN on many tasks.
 
 #### Torch: Implementing ConvNets and Recurrent Nets efficiently
 
-#### Beyond Natural Language: Learning to execute Python programs
+#### Beyond Natural Language: Learning to do math and execute Python programs
 Recurrent Neural Networks seem to be very powerful learning models. However, how powerful are they ?
 Would they be able to learn how to add two decimal numbers ? 
 We trained an LSTM-RNN to predict the result of addition of two decimal numbers. 
