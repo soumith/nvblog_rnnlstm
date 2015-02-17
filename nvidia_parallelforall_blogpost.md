@@ -81,7 +81,7 @@ ConvNets for NLP, from Collobert et. a. (2011)
 
 ![ConvNet](NLP-convnet-small.png)
 
-####Recurrent Neural Networks (In Progress)
+####Recurrent Neural Networks (RNN)
 
 Convolution Neural Networks --and more generally, feedforward neural networks-- do not traditionally have a notion of time or experience unless you explicitly pass samples from the past as input.
 After they are trained, given an input, they treat it no differently when shown the first time or the 100th time.
@@ -96,90 +96,93 @@ To understand why context is important, look at this example:
 
 Clearly, without context, you can produce sentences that make no sense.
 
-You can have context in feed forward networks, but it is much more natural to add a recurrent connection.
+You **can** have context in feed forward networks, but it is much more natural to add a recurrent connection.
 A Recurrent neural network introduces this concept of giving yourself feedback of past experiences.
 
 Apart from all the neurons in the network, it keeps a hidden state that changes as it sees different inputs. This hidden state is analogous to short-term memory.
 
 [ figure of recurrent neural networks  for text ]
 
-RNNs have
+##### Long Short Term Memory (LSTM)
+RNNs keep context in their hidden state. However, classical recurrent networks forget context very fast. 
 
-##### Long Short Term Memory
-Classical recurrent neural network forgets context very fast. 
-It takes into account very few words from the past while doing prediction.
-Here is an example of language modelling problem that requires longer memory:
+They take into account very few words from the past while doing prediction.
+Here is an example of language modelling problem that requires longer-term memory:
 
 > I bought an apple ... I am eating the _____
 
-Probability of the word `apple` should be much highier than any other
-edible like `banana` or `spaghetti`. Furthermore, any edible
+Probability of the word `apple` should be much higher than any other
+edible like `banana` or `spaghetti`, because the previous sentence mentioned that you bought an `apple`. Furthermore, any edible
 is a much better fit than non-edibles like `car`, or `cat`.
 
 
-Long Short Term Memory (LSTM) units try to address problem of long-distance 
+Long Short Term Memory (LSTM) units try to address problem of such long-term 
 dependencies. LSTM has multiple gates that act as a differentiable RAM memory.
 Access to memory cells is guarded by `update`, and `forget` gates.
-Information stored in memory cells is available for LSTM for much longer time than in classical RNN.
-This allows to make more context aware predictions.
+Information stored in memory cells is available to the LSTM for much longer time than in a classical RNN.
+This allows the model to make more context aware predictions.
 
 
-
-Exact mechanism of how LSTM works is unclear, and is the interest of contemporary research.
+An exact understanding of how LSTM works is unclear, and is the interest of contemporary research.
 However, it known that LSTM outperforms conventional RNN on many tasks. 
 
 
 #### Torch: Implementing ConvNets and Recurrent Nets efficiently
 
 #### Beyond Natural Language: Learning to execute Python programs
-Recurrent Neural Networks seem to be very powerful model. However, how powerful are they ?
+Recurrent Neural Networks seem to be very powerful learning models. However, how powerful are they ?
 Would they be able to learn how to add two decimal numbers ? 
-We trained LSTM to predict result of addition of two decimal numbers. 
+We trained an LSTM-RNN to predict the result of addition of two decimal numbers. 
 It is almost the same as language modelling. This time
-we ask model to read a "sentence" character by character and try to tell what fits best
+we ask the model to read a "sentence" character by character and try to tell what fits best
 into missing space:
 
 > 123 + 19 = ____
 
-Here correct answer consists of 4 characters: "1", "4", "2", and end of sequence character.
+Here, the correct answer consists of 4 characters: "1", "4", "2", and end of sequence character.
 
 
 Surprisingly, LSTMs with small tweaks is able to learn with 99% accuracy how to add 9 digit numbers. 
 
 > 13828700 + 10188872 = 24017572
 
-Such task involves learning about carry operator, and how to add digits. You might feel excited about
-how smart LSTM is. However, deeper scrutinization reveals that LSTM is a cheater ...
+Such a task involves learning about the carry operator, and how to add digits. You might feel excited about
+how smart and LSTM possibly is. However, deeper scrutinization reveals that LSTM is a cheater ...
 Training it on sequences up to 9 digits gives good test performance on sequences up to 9 digits. Yet, it fails on longer
-sequences of digits. This means that LSTM haven`t learnt true algorithm behind number addition. Nonetheless,
+sequences of digits. This means that LSTMs haven`t learnt the true algorithm behind number addition. Nonetheless,
 it learnt something about addition.
 
 
-We further examined what LSTM can do on much, much harder problem. 
-Is LSTM able to simulate computer program execution ? 
+We further examined what an LSTM can do on much, much harder problems. 
+Can an LSTM simulate computer program execution ? 
 We used the same code as in previous paragraph for addition, but with different examples.
-This time input consist of character level representation of a program. Target
-output is a result of program execution. Our examples look like:
+This time the input consists of character level representation of a program in a restricted set of python. The target
+output is the result of program execution. Our examples look like:
 
-> c=142012 <br/>
-> for x in range(12):c-=166776 <br/>
-> print(c). <br/>
-> target output: -1820700. <br/>
+```python
+c=142012
+for x in range(12):c-=166776
+print(c)
+```
+
+```bash 
+target output: -1820700
+```
 
 Once again LSTM proved to be powerful enough to somewhat learn mapping from programs to 
 program execution results. Prediction performance is far from 100%, which is achievable
-by python interpreter. However, LSTM gives way more better predictions than by chance.
+by a standard python interpreter. However, LSTM gives way better prediction than pure chance.
 
-
-It remains a research puzzle, how to make LSTM even more powerful. We bet that LSTM which
-would be as powerful as python interpreter should be also good for natural language processing tasks.
-The only difference between this tasks is the underlaying language, i.e. python => english :).
+It remains a research puzzle, how to make RNN-LSTM models even more powerful. We bet that an LSTM which
+would be as powerful as a python interpreter should also be good for natural language processing tasks.
+The only difference between these tasks is the underlaying language, i.e. python (vs) english :).
 
 
 #### References
 
-Neural Probabilistic Language Model
-NLP from scratch
-word2vec
-Neural Machien Translation
-Learning to Execute
+* Neural Probabilistic Language Model
+* NLP from scratch
+* word2vec
+* Neural Machine Translation
+* Learning to Execute
+* LSTM
