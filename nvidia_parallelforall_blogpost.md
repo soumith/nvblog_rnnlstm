@@ -88,7 +88,9 @@ After they are trained, given an input, they treat it no differently when shown 
 However, to tackle certain problems, you need to look at past experiences and give a different answer.
 
 If you send word by word into a feed-forward network, asking it to predict the next word, it will do so, but without any notion of current context.
-To understand why context is important, look at this example of predicting the next word, given just the previous word:
+To understand why context is important, look at this example:
+
+**Predicting the next word, given just the previous word**
 
 ![simplePredict](NLP-contextless.gif)
 
