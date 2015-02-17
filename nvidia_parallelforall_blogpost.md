@@ -158,8 +158,11 @@ This time input consist of character level representation of a program. Target
 output is a result of program execution. Our examples look like:
 
 > c=142012
+
 > for x in range(12):c-=166776
+
 > print(c).
+
 > target output: -1820700.
 
 Once again LSTM proved to be powerful enough to somewhat learn mapping from programs to 
