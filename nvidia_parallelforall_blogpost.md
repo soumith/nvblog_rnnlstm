@@ -129,6 +129,12 @@ However, it known that LSTM outperforms conventional RNN on many tasks.
 
 #### Torch: Implementing ConvNets and Recurrent Nets efficiently
 
+Torch is a scientific computing framework with packages for neural networks and optimization. It is based on the Lua language, which is similar to javascript.
+At the core of torch is a powerful Tensor library similar to numpy, which has both CPU and GPU backends.
+The neural networks package in torch implements "modules" which are different kinds of neuron layers. These modules are like lego blocks, and can be plugged together to form complicated neural networks.
+
+Implementing a ConvNet for NLP similar to 
+
 #### Beyond Natural Language: Learning to do math and execute Python programs
 Recurrent Neural Networks seem to be very powerful learning models. However, how powerful are they ?
 Would they be able to learn how to add two decimal numbers ? 
