@@ -101,7 +101,30 @@ A Recurrent neural network introduces this concept of giving yourself feedback o
 
 RNNs have
 
-##### Long Short-Term Memory
+##### Long Short Term Memory
+Classical recurrent neural network forgets context very fast. 
+It takes very few words from the past into account while doing prediction.
+Here is an example of language modelling problem that requires longer memory:
+
+> I bought an apple ... I am eating the _____
+
+Probability of the word `apple` should be much highier than any other
+edible food like `banana` or `spaghetti`. Moreover, any edible
+is more likely to fit than other words like `car`, or `cat`.
+
+
+Long Short Term Memory (LSTM) units try to address problem of long-distance 
+dependencies. LSTM has multiple gates that act as a differentiable RAM memory.
+Access to memory cells is guarded by `update`, and `forget` gates.
+Information stored in memory cells is available for LSTM for much longer time,
+and allows to make predictions more context aware.
+
+
+
+Exact mechanism of how LSTM works is unclear, and is the interest of contemporary research.
+However, it known that LSTM outperforms conventional RNN on majority of tasks. We
+share our LSTM code at https://github.com/wojzaremba/lstm
+
 
 #### Torch: Implementing ConvNets and Recurrent Nets efficiently
 
