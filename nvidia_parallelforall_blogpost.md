@@ -78,7 +78,7 @@ In case of images, convnets usually takes raw image pixels as input, interleavin
 Similarly, for language processing, ConvNets take the outputs of word embeddings as input, and then apply interleaved convolution and pooling operations, followed by fully connected layers.
 
 ConvNets for NLP, from Collobert et. a. (2011)
-![ConvNet](NLP-convnet.png =300x)
+![ConvNet](NLP-convnet.png =600x)
 
 ####Recurrent Neural Networks (In Progress)
 
