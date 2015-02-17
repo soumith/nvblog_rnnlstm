@@ -25,7 +25,7 @@ To achieve this, each word is mapped to a set of numbers in a high-dimensional s
 Word embeddings can either be learnt in a general-purpose fashion before-hand by reading large amounts of text (like Wikipedia), or specially learnt for a particular task (like sentiment analysis).
 We go into a little more detail on learning word embeddings in a later section.
 
-[Picture of word embeddings word2vec]
+[TODO: Picture of word embeddings word2vec]
 
 After the word embeddings are learnt, the next problem to tackle would be to string words together appropriately in small, grammatically correct sentences which make sense. This is called [language modeling](http://en.wikipedia.org/wiki/Language_model). Language modeling is one part of quantifying how well the machine understands language.
 For example, given a sentence ("I am eating pasta for lunch"), and a word ("cars"), if the machine can tell you with high confidence, whether the word is relevant to the sentence, or not ("cars" is related to this sentence with a probability 0.01 and I am pretty confident about it), then that would somewhat indicate that the machine understands words and contexts.
@@ -100,8 +100,9 @@ You **can** have context in feed forward networks, but it is much more natural t
 A Recurrent neural network introduces this concept of giving yourself feedback of past experiences.
 
 Apart from all the neurons in the network, it keeps a hidden state that changes as it sees different inputs. This hidden state is analogous to short-term memory.
+It remembers past experiences and bases it's current answer on both the current input as well as past experiences.
 
-[ figure of recurrent neural networks  for text ]
+[TODO: figure of recurrent neural networks  for text ]
 
 ##### Long Short Term Memory (LSTM)
 RNNs keep context in their hidden state. However, classical recurrent networks forget context very fast. 
@@ -122,25 +123,37 @@ Access to memory cells is guarded by `update`, and `forget` gates.
 Information stored in memory cells is available to the LSTM for much longer time than in a classical RNN.
 This allows the model to make more context aware predictions.
 
+[TODO: LSTM figure]
 
 An exact understanding of how LSTM works is unclear, and is the interest of contemporary research.
 However, it known that LSTM outperforms conventional RNN on many tasks. 
 
-
 #### Torch + CuDNN + CuBLAS: Implementing ConvNets and Recurrent Nets efficiently
 
-Torch is a scientific computing framework with packages for neural networks and optimization. It is based on the Lua language, which is similar to javascript.
+Torch is a scientific computing framework with packages for neural networks and optimization (among hundreds of others).
+It is based on the Lua language, which is similar to javascript and is treated as a wrapper to performant C/C++ and CUDA code.
 At the core of torch is a powerful Tensor library similar to numpy, which has both CPU and GPU backends.
-The neural networks package in torch implements "modules" which are different kinds of neuron layers and "containers" which can have several modules within them. These modules are like lego blocks, and can be plugged together to form complicated neural networks.
-Each module implements a function and it's derivative. This makes it easy to calculate the derivative of any neuron in the network with respect to the objective function of the network (via the chain rule). The objective function is simply a mathematical formula to calculate how well a model is doing on the given task. The lower the objective, the better the model performs.
+The neural networks package in torch implements `modules` which are different kinds of neuron layers and `containers` which can have several modules within them.
+These `modules` are like lego blocks, and can be plugged together to form complicated neural networks.
 
-For example, to calculate the Tanh of an input, you can create an nn.Tanh layer and pass the input through it. To calculate the derivative wrt the output, you can pass it in the backward direction.
+> Each `module` implements a function and it's derivative.
+
+This makes it easy to calculate the derivative of any neuron in the network with respect to the `objective function` of the network (via the chain rule).
+The `objective function` is simply a mathematical formula to calculate how well a model is doing on the given task. (Usually,) the smaller the objective, the better the model performs.
+
+A small example of `modules` is shown, where we calculate the element-wise Tanh of an input matrix, you can create an `nn.Tanh` `module` and pass the input through it.
+To calculate the derivative wrt the objective, you can pass it in the backward direction.
+
 ```lua
+input = torch.randn(100)
 m = nn.Tanh()
 output = m:forward(input)
 InputDerivative = m:backward(input, ObjectiveDerivative)
 ```
-Implementing the ConvNet described above from Collbert et. al.
+
+Implementing the ConvNet shown earlier in the figure from Collbert et. al. is also very simple.
+You put all the modules into a `Sequential` container that chains all modules one after the other.
+
 ```lua
 nWordsInDictionary = 100000
 embeddingSize = 100
@@ -156,10 +169,7 @@ m:add(nn.Linear())
 m:cuda() -- transfer the model to GPU
 ```
 
-This ConvNet has :forward and :backward functions that allow you to train your network.
-
-To use CuDNN in Torch, you have to simply replace the prefix `nn.` with `cudnn.`.
-CuBLAS is used by default for performing blas operations such as matrix multiplications.
+This ConvNet has :forward and :backward functions that allow you to train your network (on CPU or GPU).
 
 An extension to the `nn` package is the `nngraph` package which lets you build arbitrary acyclic graphs of neural networks.
 `nngraph` is much nicer to build complicated modules such as the LSTM memory unit.
@@ -184,7 +194,17 @@ local function lstm(i, prev_c, prev_h)
 end
 ```
 
-With these few lines of code, an LSTM unit is ready, and it can be executed on CPU or GPU as you like.
+With these few lines of code, powerful state-of-the-art neural networks are ready, and can be executed on CPU or GPU with great efficiency.
+
+CuBLAS, and more recently CuDNN, have accelerated deep learning research quite significantly in recent years,
+and the recent success of deep learning can be partly attributed to these awesome libraries from NVIDIA.
+
+To use NVIDIA's CuDNN in Torch, you have to simply replace the prefix `nn.` with `cudnn.`.
+CuDNN accelerates the training of neural networks compared to Torch's default CUDA backend (sometimes upto 30%) and is often several magnitudes faster than using CPUs.
+
+CuBLAS is automatically used by Torch for performing blas operations such as matrix multiplications, and accelerates neural networks significantly compared to CPUs as well.
+
+[TODO: Add performance numbers after discussing with Stephen/Mark]
 
 #### Beyond Natural Language: Learning to do math and execute Python programs
 Recurrent Neural Networks seem to be very powerful learning models. However, how powerful are they ?
