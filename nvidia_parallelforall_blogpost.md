@@ -127,13 +127,64 @@ An exact understanding of how LSTM works is unclear, and is the interest of cont
 However, it known that LSTM outperforms conventional RNN on many tasks. 
 
 
-#### Torch: Implementing ConvNets and Recurrent Nets efficiently
+#### Torch + CuDNN + CuBLAS: Implementing ConvNets and Recurrent Nets efficiently
 
 Torch is a scientific computing framework with packages for neural networks and optimization. It is based on the Lua language, which is similar to javascript.
 At the core of torch is a powerful Tensor library similar to numpy, which has both CPU and GPU backends.
-The neural networks package in torch implements "modules" which are different kinds of neuron layers. These modules are like lego blocks, and can be plugged together to form complicated neural networks.
+The neural networks package in torch implements "modules" which are different kinds of neuron layers and "containers" which can have several modules within them. These modules are like lego blocks, and can be plugged together to form complicated neural networks.
+Each module implements a function and it's derivative. This makes it easy to calculate the derivative of any neuron in the network with respect to the objective function of the network (via the chain rule). The objective function is simply a mathematical formula to calculate how well a model is doing on the given task. The lower the objective, the better the model performs.
 
-Implementing a ConvNet for NLP similar to 
+For example, to calculate the Tanh of an input, you can create an nn.Tanh layer and pass the input through it. To calculate the derivative wrt the output, you can pass it in the backward direction.
+```lua
+m = nn.Tanh()
+output = m:forward(input)
+InputDerivative = m:backward(input, ObjectiveDerivative)
+```
+Implementing the ConvNet described above from Collbert et. al.
+```lua
+nWordsInDictionary = 100000
+embeddingSize = 100
+sentenceLength = 5
+m = nn.Sequential()   -- a container that chains it's modules one after the other
+m:add(nn.LookupTable(nWordsInDictionary, embeddingSize))
+m:add(nn.TemporalConvolution(sentenceLength, 150, embeddingSize))
+m:add(nn.Max(1))
+m:add(nn.Linear(150, 1024))
+m:add(nn.HardTanh())
+m:add(nn.Linear())
+ 
+m:cuda() -- transfer the model to GPU
+```
+
+This ConvNet has :forward and :backward functions that allow you to train your network.
+
+To use CuDNN in Torch, you have to simply replace the prefix `nn.` with `cudnn.`.
+CuBLAS is used by default for performing blas operations such as matrix multiplications.
+
+An extension to the `nn` package is the `nngraph` package which lets you build arbitrary acyclic graphs of neural networks.
+`nngraph` is much nicer to build complicated modules such as the LSTM memory unit.
+
+```lua
+local function lstm(i, prev_c, prev_h)
+  local function new_input_sum()
+    local i2h            = nn.Linear(params.rnn_size, params.rnn_size)
+	local h2h            = nn.Linear(params.rnn_size, params.rnn_size)
+	return nn.CAddTable()({i2h(i), h2h(prev_h)})
+  end
+  local in_gate          = nn.Sigmoid()(new_input_sum())
+  local forget_gate      = nn.Sigmoid()(new_input_sum())
+  local in_gate2         = nn.Tanh()(new_input_sum())
+  local next_c           = nn.CAddTable()({
+  nn.CMulTable()({forget_gate, prev_c}),
+  nn.CMulTable()({in_gate,     in_gate2})
+  })
+  local out_gate         = nn.Sigmoid()(new_input_sum())
+  local next_h           = nn.CMulTable()({out_gate, nn.Tanh()(next_c)})
+  return next_c, next_h
+end
+```
+
+With these few lines of code, an LSTM unit is ready, and it can be executed on CPU or GPU as you like.
 
 #### Beyond Natural Language: Learning to do math and execute Python programs
 Recurrent Neural Networks seem to be very powerful learning models. However, how powerful are they ?
