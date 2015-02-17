@@ -132,12 +132,12 @@ Recurrent Neural Networks seem to be very powerful model. However, how powerful 
 Would they be able to learn how to add two decimal numbers ? 
 We trained LSTM to predict result of addition of two decimal numbers. 
 It is almost the same as language modelling. This time
-we ask model to read a ``sentence'' character by character and try to tell what fits best
+we ask model to read a "sentence" character by character and try to tell what fits best
 into missing space:
 
 > 123 + 19 = ____
 
-Here correct answer consists of 4 characters: ``1'', ``4'', ``2'', and end of sequence character.
+Here correct answer consists of 4 characters: "1", "4", "2", and end of sequence character.
 
 
 Surprisingly, LSTMs with small tweaks is able to learn with 99% accuracy how to add 9 digit numbers. 
@@ -158,9 +158,9 @@ This time input consist of character level representation of a program. Target
 output is a result of program execution. Our examples look like:
 
 > c=142012 <br/>
-> for x in range(12):c-=166776
-> print(c).
-> target output: -1820700.
+> for x in range(12):c-=166776 <br/>
+> print(c). <br/>
+> target output: -1820700. <br/>
 
 Once again LSTM proved to be powerful enough to somewhat learn mapping from programs to 
 program execution results. Prediction performance is far from 100%, which is achievable
