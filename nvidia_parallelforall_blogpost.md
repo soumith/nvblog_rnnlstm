@@ -102,11 +102,75 @@ Apart from all the neurons in the network, it keeps a hidden state that changes 
 
 RNNs have
 
-##### Long Short-Term Memory
+##### Long Short Term Memory
+Classical recurrent neural network forgets context very fast. 
+It takes into account very few words from the past while doing prediction.
+Here is an example of language modelling problem that requires longer memory:
+
+> I bought an apple ... I am eating the _____
+
+Probability of the word `apple` should be much highier than any other
+edible like `banana` or `spaghetti`. Furthermore, any edible
+is a much better fit than non-edibles like `car`, or `cat`.
+
+
+Long Short Term Memory (LSTM) units try to address problem of long-distance 
+dependencies. LSTM has multiple gates that act as a differentiable RAM memory.
+Access to memory cells is guarded by `update`, and `forget` gates.
+Information stored in memory cells is available for LSTM for much longer time than in classical RNN.
+This allows to make more context aware predictions.
+
+
+
+Exact mechanism of how LSTM works is unclear, and is the interest of contemporary research.
+However, it known that LSTM outperforms conventional RNN on many tasks. 
+
 
 #### Torch: Implementing ConvNets and Recurrent Nets efficiently
 
 #### Beyond Natural Language: Learning to execute Python programs
+Recurrent Neural Networks seem to be very powerful model. However, how powerful are they ?
+Would they be able to learn how to add two decimal numbers ? 
+We trained LSTM to predict result of addition of two decimal numbers. 
+It is almost the same as language modelling. This time
+we ask model to read a "sentence" character by character and try to tell what fits best
+into missing space:
+
+> 123 + 19 = ____
+
+Here correct answer consists of 4 characters: "1", "4", "2", and end of sequence character.
+
+
+Surprisingly, LSTMs with small tweaks is able to learn with 99% accuracy how to add 9 digit numbers. 
+
+> 13828700 + 10188872 = 24017572
+
+Such task involves learning about carry operator, and how to add digits. You might feel excited about
+how smart LSTM is. However, deeper scrutinization reveals that LSTM is a cheater ...
+Training it on sequences up to 9 digits gives good test performance on sequences up to 9 digits. Yet, it fails on longer
+sequences of digits. This means that LSTM haven`t learnt true algorithm behind number addition. Nonetheless,
+it learnt something about addition.
+
+
+We further examined what LSTM can do on much, much harder problem. 
+Is LSTM able to simulate computer program execution ? 
+We used the same code as in previous paragraph for addition, but with different examples.
+This time input consist of character level representation of a program. Target
+output is a result of program execution. Our examples look like:
+
+> c=142012 <br/>
+> for x in range(12):c-=166776 <br/>
+> print(c). <br/>
+> target output: -1820700. <br/>
+
+Once again LSTM proved to be powerful enough to somewhat learn mapping from programs to 
+program execution results. Prediction performance is far from 100%, which is achievable
+by python interpreter. However, LSTM gives way more better predictions than by chance.
+
+
+It remains a research puzzle, how to make LSTM even more powerful. We bet that LSTM which
+would be as powerful as python interpreter should be also good for natural language processing tasks.
+The only difference between this tasks is the underlaying language, i.e. python => english :).
 
 
 #### References
