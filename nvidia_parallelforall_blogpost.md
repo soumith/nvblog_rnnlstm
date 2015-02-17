@@ -90,7 +90,7 @@ However, to tackle certain problems, you need to look at past experiences and gi
 If you send word by word into a feed-forward network, asking it to predict the next word, it will do so, but without any notion of current context.
 To understand why context is important, look at this example:
 
-**Predicting the next word, given just the previous word**
+**The importance of context: Predicting the next word, given only the previous word and no context**
 
 ![simplePredict](NLP-contextless.gif)
 
