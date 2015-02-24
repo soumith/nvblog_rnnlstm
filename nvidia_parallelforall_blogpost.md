@@ -62,10 +62,10 @@ Word embeddings are usually initialized to random numbers (and learned during th
 
 *Convolutional Neural Networks* (ConvNets), which were covered in [a previous Parallel Forall post by Evan Shelhamer](http://devblogs.nvidia.com/parallelforall/deep-learning-computer-vision-caffe-cudnn/), have enjoyed wide success in the last few years in several domains including images, video, audio and natural language processing.
 
-When applied to images, ConvNets usually take raw image pixels as input, interleaving convolution layers along with pooling layers with non-linear functions in between, followed by fully connected layers. Similarly, for language processing, ConvNets take the outputs of word embeddings as input, and then apply interleaved convolution and pooling operations, followed by fully connected layers. Figure 3 shows an example ConvNet.
+When applied to images, ConvNets usually take raw image pixels as input, interleaving convolution layers along with pooling layers with non-linear functions in between, followed by fully connected layers. Similarly, for language processing, ConvNets take the outputs of word embeddings as input, and then apply interleaved convolution and pooling operations, followed by fully connected layers. Figure 3 shows an example ConvNet applied to sentences.
 
 ![ConvNet](NLP-convnet-small.png)
-[Figure 3: TODO: Is this the caption for the image? Provide a more explanatory caption.] ConvNets for NLP, from Collobert et. a. (2011)
+[Figure 3: ConvNets are applied to text by Collobert et. al. (2011). These ConvNets are largely the same as the ones used for object classification on images.
 
 ### Recurrent Neural Networks (RNN)
 
@@ -172,10 +172,9 @@ We trained an LSTM-RNN to predict the result of addition of two decimal numbers,
 
 > 123 + 19 = ____
 
-Here, the correct answer consists of 4 characters: "1", "4", "2", and the end of sequence character. Surprisingly, an LSTM with small tweaks is able to learn with 99% accuracy how to add 9-digit numbers. 
+Here, the correct answer consists of 4 characters: "1", "4", "2", and the end of sequence character. Surprisingly, an LSTM with small tweaks is able to learn with 99% accuracy how to add numbers which are upto 9 digits.
 
 > 13828700 + 10188872 = 24017572
-[TODO: These are 8-digit numbers, but you say 9 above!]
 
 Such a task involves learning about the carry operator, and how to add digits. On seeing this result, you might feel excited about how smart and powerful LSTM potentially is. However, deeper scrutinization reveals that LSTM is a cheater. Training it on sequences up to 9 digits gives good test performance on sequences up to 9 digits. Yet it fails on longer sequences of digits. This means that the LSTM hasn't learned the true algorithm behind number addition. Nonetheless, it did learn something about addition.
 
