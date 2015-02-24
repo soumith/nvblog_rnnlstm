@@ -91,7 +91,7 @@ RNNs keep context in their hidden state. However, classical recurrent networks f
 
 The probability of the word `apple` should be much higher than any other edible like `banana` or `spaghetti`, because the previous sentence mentioned that you bought an `apple`. Furthermore, any edible is a much better fit than non-edibles like `car`, or `cat`.
 
-Long Short Term Memory (LSTM) units try to address the problem of such long-term dependencies. LSTM has multiple gates that act as a differentiable RAM memory. Access to memory cells is guarded by `update`, and `forget` gates. Information stored in memory cells is available to the LSTM for a much longer time than in a classical RNN, which allows the model to make more context-aware predictions.
+Long Short Term Memory (LSTM) units try to address the problem of such long-term dependencies. LSTM has multiple gates that act as a differentiable RAM memory. Access to memory cells is guarded by `update`, and `forget` gates. Information stored in memory cells is available to the LSTM for a much longer time than in a classical RNN, which allows the model to make more context-aware predictions. An LSTM unit is shown in Figure 6.
 
 ![LSTM](NLP-lstm.png)
 
@@ -103,7 +103,7 @@ An exact understanding of how LSTM works is unclear, and is a topic of contempor
 
 Torch is a scientific computing framework with packages for neural networks and optimization (among hundreds of others). It is based on the Lua language, which is similar to javascript and is treated as a wrapper for optimized C/C++ and CUDA C++ code.
 
-At the core of torch is a powerful tensor library similar to [Numpy](http://www.numpy.org). The Torch tensor library has both CPU and GPU backends. The neural networks package in torch implements *modules*, which are different kinds of neuron layers, and "containers", which can have several modules within them. Modules are like lego blocks, and can be plugged together to form complicated neural networks.
+At the core of torch is a powerful tensor library similar to [Numpy](http://www.numpy.org). The Torch tensor library has both CPU and GPU backends. The neural networks package in torch implements *modules*, which are different kinds of neuron layers, and *containers*, which can have several modules within them. Modules are like lego blocks, and can be plugged together to form complicated neural networks.
 
 Each module implements a function and it's derivative. This makes it easy to calculate the derivative of any neuron in the network with respect to the *objective function* of the network (via the [chain rule](http://en.wikipedia.org/wiki/Chain_rule)). The objective function is simply a mathematical formula to calculate how well a model is doing on the given task. Usually, the smaller the objective, the better the model performs.
 
@@ -157,13 +157,25 @@ local function lstm(i, prev_c, prev_h)
 end
 ```
 
-With these few lines of code we can create powerful state-of-the-art neural networks, ready for execution on CPUs or GPUs with great efficiency.
+With these few lines of code we can create powerful state-of-the-art neural networks, ready for execution on CPUs or GPUs with good efficiency.
 
 [cuBLAS](https://developer.nvidia.com/cuBLAS), and more recently [cuDNN](), have accelerated deep learning research quite significantly, and the recent success of deep learning can be partly attributed to these awesome libraries from NVIDIA. cuBLAS is automatically used by Torch for performing BLAS operations such as matrix multiplications, and accelerates neural networks significantly compared to CPUs.
 
 To use NVIDIA cuDNN in Torch, simply replace the prefix `nn.` with `cudnn.`. cuDNN accelerates the training of neural networks compared to Torch's default CUDA backend (sometimes up to 30%) and is often several orders of magnitude faster than using CPUs.
 
-[TODO: Add performance numbers after discussing with Stephen/Mark]
+For language modeling, we've implemented an RNN-LSTM neural network using Torch. It gives state-of-the-art results on a standard quality metric called perplexity.
+We compare the training time of the network on an Intel Core i7 2.6 GHZ vs accelerating it on an NVIDIA GTX 980 GPU. 
+
+Shown in the table below are the times for a small RNN and a larger RNN. [The full source of this implementation is here](https://github.com/wojzaremba/lstm).
+
+| Device                | Small-RNN | Large-RNN |
+|-----------------------|-----------|-----------|
+| Intel Core i7 2.6 GHZ |  156 mins | 9351 mins |
+| NVIDIA GTX 980        |   30 mins | 1006 mins |
+| Speedup               |  5.2x     | 9.29x     |
+
+Table 1: Training times of a state-of-the-art recurrent network with LSTM cells on CPU vs GPU
+
 
 ## Beyond Natural Language: Learning to do math and execute Python programs
 
