@@ -53,7 +53,7 @@ Within neural networks, there are certain kinds of neural networks that are more
 Word embeddings are not unique to neural networks; they are common to all word-level neural language models. Embeddings are stored in a simple lookup table (or hash table), that given a word, returns the embedding (which is an array of numbers). Figure 2 shows and example.
 
 ![Lookup Table](NLP-lookuptable.png)
-[Figure 2: Caption.]
+[Figure 2: TODO: Caption.]
 
 Word embeddings are usually initialized to random numbers (and learned during the training phase of the neural network), or initialized from previously trained models over large texts like Wikipedia.
 
