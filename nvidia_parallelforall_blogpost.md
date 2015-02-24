@@ -24,7 +24,7 @@ For a machine to understand language, it first has to develop a mental map of wo
 Word embeddings can either be learned in a general-purpose fashion before-hand by reading large amounts of text (like Wikipedia), or specially learned for a particular task (like sentiment analysis). We go into a little more detail on learning word embeddings in a later section.
 
 ![Word Embeddings](NLP-linguistic_regularities_in_WE.png)
-[Table 1: Mikolov et. al. showcase simple additive properties of their word embeddings.]
+[Table 1: Mikolov et. al. [3] showcase simple additive properties of their word embeddings.]
 
 After the machine has learned word embeddings, the next problem to tackle is the ability to string words together appropriately in small, grammatically correct sentences which make sense. This is called [language modeling](http://en.wikipedia.org/wiki/Language_model). Language modeling is one part of quantifying how well the machine understands language. 
 
@@ -66,7 +66,7 @@ When applied to images, ConvNets usually take raw image pixels as input, interle
 
 ![ConvNet](NLP-convnet-small.png)
 
-[Figure 3: ConvNets are applied to text by Collobert et. al. (2011). These ConvNets are largely the same as the ones used for object classification on images.
+[Figure 3: ConvNets are applied to text by Collobert et. al. [2]. These ConvNets are largely the same as the ones used for object classification on images.
 
 ### Recurrent Neural Networks (RNN)
 
@@ -88,25 +88,25 @@ A Recurrent neural network has the capability to give itself feedback from past 
 
 ### Long Short Term Memory (LSTM)
 
-RNNs keep context in their hidden state. However, classical recurrent networks forget context very fast. They take into account very few words from the past while doing prediction. Here is an example of a language modelling problem that requires longer-term memory.
+RNNs keep context in their hidden state (which can be seen as memory). However, classical recurrent networks forget context very fast. They take into account very few words from the past while doing prediction. Here is an example of a language modelling problem that requires longer-term memory.
 
 > I bought an apple ... I am eating the _____
 
 The probability of the word `apple` should be much higher than any other edible like `banana` or `spaghetti`, because the previous sentence mentioned that you bought an `apple`. Furthermore, any edible is a much better fit than non-edibles like `car`, or `cat`.
 
-Long Short Term Memory (LSTM) units try to address the problem of such long-term dependencies. LSTM has multiple gates that act as a differentiable RAM memory. Access to memory cells is guarded by `update`, and `forget` gates. Information stored in memory cells is available to the LSTM for a much longer time than in a classical RNN, which allows the model to make more context-aware predictions. An LSTM unit is shown in Figure 6.
+Long Short Term Memory (LSTM) [6] units try to address the problem of such long-term dependencies. LSTM has multiple gates that act as a differentiable RAM memory. Access to memory cells is guarded by `update`, and `forget` gates. Information stored in memory cells is available to the LSTM for a much longer time than in a classical RNN, which allows the model to make more context-aware predictions. An LSTM unit is shown in Figure 6.
 
 ![LSTM](NLP-lstm.png)
 
-Figure 6: Illustration of an LSTM unit from Srivistava et. al. (2015). The input gate controls the amount of current input to be remembered, the output gate controls the amount of the current memory to be given as output to the next stage, and the erase gate controls what part of the memory cell is erased and retained in the current time step. 
+Figure 6: Illustration of an LSTM unit from Srivistava et. al. [8]. The input gate controls the amount of current input to be remembered, the output gate controls the amount of the current memory to be given as output to the next stage, and the erase gate controls what part of the memory cell is erased and retained in the current time step. 
 
 An exact understanding of how LSTM works is unclear, and is a topic of contemporary research. However, it is known that LSTM outperforms conventional RNNs on many tasks. 
 
 ## Torch + cuDNN + cuBLAS: Implementing ConvNets and Recurrent Nets efficiently
 
-Torch is a scientific computing framework with packages for neural networks and optimization (among hundreds of others). It is based on the Lua language, which is similar to javascript and is treated as a wrapper for optimized C/C++ and CUDA C++ code.
+[Torch](http://torch.ch) is a scientific computing framework with packages for neural networks and optimization (among hundreds of others). It is based on the Lua language, which is similar to javascript and is treated as a wrapper for optimized C/C++ and CUDA code.
 
-At the core of torch is a powerful tensor library similar to [Numpy](http://www.numpy.org). The Torch tensor library has both CPU and GPU backends. The neural networks package in torch implements *modules*, which are different kinds of neuron layers, and *containers*, which can have several modules within them. Modules are like lego blocks, and can be plugged together to form complicated neural networks.
+At the core of Torch is a powerful tensor library similar to [Numpy](http://www.numpy.org). The Torch tensor library has both CPU and GPU backends. The neural networks package in torch implements *modules*, which are different kinds of neuron layers, and *containers*, which can have several modules within them. Modules are like lego blocks, and can be plugged together to form complicated neural networks.
 
 Each module implements a function and it's derivative. This makes it easy to calculate the derivative of any neuron in the network with respect to the *objective function* of the network (via the [chain rule](http://en.wikipedia.org/wiki/Chain_rule)). The objective function is simply a mathematical formula to calculate how well a model is doing on the given task. Usually, the smaller the objective, the better the model performs.
 
@@ -166,7 +166,7 @@ With these few lines of code we can create powerful state-of-the-art neural netw
 
 To use NVIDIA cuDNN in Torch, simply replace the prefix `nn.` with `cudnn.`. cuDNN accelerates the training of neural networks compared to Torch's default CUDA backend (sometimes up to 30%) and is often several orders of magnitude faster than using CPUs.
 
-For language modeling, we've implemented an RNN-LSTM neural network using Torch. It gives state-of-the-art results on a standard quality metric called perplexity.
+For language modeling, we've implemented an RNN-LSTM neural network [9] using Torch. It gives state-of-the-art results on a standard quality metric called perplexity. [The full source of this implementation is available here](https://github.com/wojzaremba/lstm).
 We compare the training time of the network on an Intel Core i7 2.6 GHZ vs accelerating it on an NVIDIA GTX 980 GPU. 
 
 Shown in the Table 1 are the times for a small RNN and a larger RNN. [The full source of this implementation is here](https://github.com/wojzaremba/lstm).
@@ -211,10 +211,16 @@ How to make RNN-LSTM models even more powerful remains a research challenge. We 
 
 #### References
 
-[TODO: Fill this in.]
-* Neural Probabilistic Language Model
-* NLP from scratch
-* word2vec
-* Neural Machine Translation
-* Learning to Execute
-* LSTM
+1. Bengio, Yoshua, et al. "A neural probabilistic language model." The Journal of Machine Learning Research 3 (2003): 1137-1155.
+2. Collobert, Ronan, et al. "Natural language processing (almost) from scratch." The Journal of Machine Learning Research 12 (2011): 2493-2537.
+3. Mikolov, Tomas, et al. "Efficient estimation of word representations in vector space." arXiv preprint arXiv:1301.3781 (2013).
+4. Sutskever, Ilya, Oriol Vinyals, and Quoc VV Le. "Sequence to sequence learning with neural networks." Advances in Neural Information Processing Systems. 2014.
+5. Zaremba, Wojciech, and Ilya Sutskever. "Learning to execute." arXiv preprint arXiv:1410.4615 (2014).
+6. Hochreiter, Sepp, and Jürgen Schmidhuber. "Long short-term memory." Neural computation 9.8 (1997): 1735-1780.
+7. Collobert, Ronan, Koray Kavukcuoglu, and Clément Farabet. "Torch7: A matlab-like environment for machine learning." BigLearn, NIPS Workshop. No. EPFL-CONF-192376. 2011.
+8. Srivastava, Nitish, Elman Mansimov, and Ruslan Salakhutdinov. "Unsupervised Learning of Video Representations using LSTMs." arXiv preprint arXiv:1502.04681 (2015).
+9. Zaremba, Wojciech, Ilya Sutskever, and Oriol Vinyals. "Recurrent neural network regularization." arXiv preprint arXiv:1409.2329 (2014).
+10. http://torch.ch
+11. https://github.com/wojzaremba/lstm
+12. https://github.com/wojciechz/learning_to_execute
+
