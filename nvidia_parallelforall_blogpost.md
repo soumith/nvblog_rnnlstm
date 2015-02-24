@@ -82,7 +82,7 @@ Clearly, without context, you can produce sentences that make no sense. You *can
 
 A Recurrent neural network has the capability to give itself feedback from past experiences. Apart from all the neurons in the network, it maintains a hidden state that changes as it sees different inputs. This hidden state is analogous to short-term memory. It remembers past experiences and bases its current answer on both the current input as well as past experiences. An illustration is shown in Figure 5.
 
-![simplePredict](NLP-recurrent.png)
+![recurrent](NLP-recurrent.png)
 
 [Figure 5: A recurrent neural network has memory of past experiences. The recurrent connection preserves these experiences and helps the network keep a notion of context.]
 
