@@ -19,14 +19,14 @@ both convey the information that you are going home.
 
 # Word Maps and Language Models
 
-For a machine to understand language, it first has to develop a mental map of words, their meaning and interaction with other words. It needs to build a dictionary of words, and understand where they stand semantically and contextually, compared to other words in their dictionary. To achieve this, each word is mapped to a set of numbers in a high-dimensional space, which are called "word embeddings". Similar words are close to each other in this number space, and dissimilar words are far apart.
+For a machine to understand language, it first has to develop a mental map of words, their meaning and interaction with other words. It needs to build a dictionary of words, and understand where they stand semantically and contextually, compared to other words in their dictionary. To achieve this, each word is mapped to a set of numbers in a high-dimensional space, which are called "word embeddings". Similar words are close to each other in this number space, and dissimilar words are far apart. Some word embeddings encode mathematical properties such as addition and subtraction (For some examples, see Table 1).
 
 Word embeddings can either be learned in a general-purpose fashion before-hand by reading large amounts of text (like Wikipedia), or specially learned for a particular task (like sentiment analysis). We go into a little more detail on learning word embeddings in a later section.
 
-[TODO: Picture of word embeddings word2vec]
-[TODO: Figure 1: Caption. And refer to the figure somewhere in the text.]
+![Word Embeddings](NLP-linguistic_regularities_in_WE.png)
+[Table 1: Mikolov et. al. showcase simple additive properties of their word embeddings.]
 
-After the machine has learned word embeddings, the next problem to tackle is the ability to string words together appropriately in small, grammatically correct sentences which make sense. This is called [language modeling](http://en.wikipedia.org/wiki/Language_model). Language modeling is one part of quantifying how well the machine understands language.
+After the machine has learned word embeddings, the next problem to tackle is the ability to string words together appropriately in small, grammatically correct sentences which make sense. This is called [language modeling](http://en.wikipedia.org/wiki/Language_model). Language modeling is one part of quantifying how well the machine understands language. 
 
 For example, given a sentence ("I am eating pasta for lunch."), and a word ("cars"), if the machine can tell you with high confidence whether or not the word is relevant to the sentence ("cars" is related to this sentence with a probability 0.01 and I am pretty confident about it), then that indicates that the machine understands something about words and contexts.
 
@@ -35,8 +35,6 @@ An even simpler metric is to predict the next word in the sentence. Given a sent
 > I am eating _____
 
 To fill in the blank, a good language model would likely give higher probabilities to all edibles like `pasta`, `apple`, or `chocolate`, and it would give lower probability to other words in the dictionary which are contextually irrelevant like `taxi`, `building`, or `music`.
-
-[TODO: On its own, this sentence is out of context. What do you mean to say here? What products does it enable? Does this need to be moved somewhere else?] A good language model would be key to several products that rely on more natural human interaction.
 
 Traditionally language modeling has been done by computing `n-grams`&mdash;which are groups of words&mdash;and processing the `n-grams` further with heuristics, before feeding them into machine learning models. For example, the `2-grams` for the sentence
 
