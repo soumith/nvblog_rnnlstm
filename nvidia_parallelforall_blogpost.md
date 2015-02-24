@@ -54,7 +54,7 @@ Word embeddings are not unique to neural networks; they are common to all word-l
 
 ![Lookup Table](NLP-lookuptable.png)
 
-[Figure 2: Word embeddings are usually stored in a simple lookup table. Given a word, the word vector of numbers is returned. Given a sentence, a matrix with vectors of each word in the sentence are returned.]
+*Figure 2: Word embeddings are usually stored in a simple lookup table. Given a word, the word vector of numbers is returned. Given a sentence, a matrix with vectors of each word in the sentence are returned.*
 
 Word embeddings are usually initialized to random numbers (and learned during the training phase of the neural network), or initialized from previously trained models over large texts like Wikipedia.
 
