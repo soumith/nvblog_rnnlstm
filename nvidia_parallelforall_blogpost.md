@@ -93,8 +93,9 @@ The probability of the word `apple` should be much higher than any other edible 
 
 Long Short Term Memory (LSTM) units try to address the problem of such long-term dependencies. LSTM has multiple gates that act as a differentiable RAM memory. Access to memory cells is guarded by `update`, and `forget` gates. Information stored in memory cells is available to the LSTM for a much longer time than in a classical RNN, which allows the model to make more context-aware predictions.
 
-[TODO: LSTM figure]
-[Figure 6: Caption. And refer to Figure 6 in the text.]
+![LSTM](NLP-lstm.png)
+
+Figure 6: Illustration of an LSTM unit from Srivistava et. al. (2015). The input gate controls the amount of current input to be remembered, the output gate controls the amount of the current memory to be given as output to the next stage, and the erase gate controls what part of the memory cell is erased and retained in the current time step. 
 
 An exact understanding of how LSTM works is unclear, and is a topic of contemporary research. However, it is known that LSTM outperforms conventional RNNs on many tasks. 
 
