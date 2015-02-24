@@ -78,10 +78,11 @@ If you send sentences word-by-word into a feed-forward network, asking it to pre
 
 Clearly, without context, you can produce sentences that make no sense. You *can* have context in feed-forward networks, but it is much more natural to add a recurrent connection.
 
-A Recurrent neural network has the capability to give itself feedback from past experiences. Apart from all the neurons in the network, it maintains a hidden state that changes as it sees different inputs. This hidden state is analogous to short-term memory. It remembers past experiences and bases its current answer on both the current input as well as past experiences.
+A Recurrent neural network has the capability to give itself feedback from past experiences. Apart from all the neurons in the network, it maintains a hidden state that changes as it sees different inputs. This hidden state is analogous to short-term memory. It remembers past experiences and bases its current answer on both the current input as well as past experiences. An illustration is shown in Figure 5.
 
-[TODO: figure of recurrent neural networks  for text ]
-[Figure 5: Caption. And refer to Figure 5 in text.]
+![simplePredict](NLP-recurrent.png)
+
+[Figure 5: A recurrent neural network has memory of past experiences. The recurrent connection preserves these experiences and helps the network keep a notion of context.]
 
 ### Long Short Term Memory (LSTM)
 
@@ -166,7 +167,7 @@ To use NVIDIA cuDNN in Torch, simply replace the prefix `nn.` with `cudnn.`. cuD
 For language modeling, we've implemented an RNN-LSTM neural network using Torch. It gives state-of-the-art results on a standard quality metric called perplexity.
 We compare the training time of the network on an Intel Core i7 2.6 GHZ vs accelerating it on an NVIDIA GTX 980 GPU. 
 
-Shown in the table below are the times for a small RNN and a larger RNN. [The full source of this implementation is here](https://github.com/wojzaremba/lstm).
+Shown in the Table 1 are the times for a small RNN and a larger RNN. [The full source of this implementation is here](https://github.com/wojzaremba/lstm).
 
 | Device                | Small-RNN | Large-RNN |
 |-----------------------|-----------|-----------|
@@ -175,7 +176,6 @@ Shown in the table below are the times for a small RNN and a larger RNN. [The fu
 | Speedup               |  5.2x     | 9.29x     |
 
 Table 1: Training times of a state-of-the-art recurrent network with LSTM cells on CPU vs GPU
-
 
 ## Beyond Natural Language: Learning to do math and execute Python programs
 
