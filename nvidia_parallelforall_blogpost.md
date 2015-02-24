@@ -65,6 +65,7 @@ Word embeddings are usually initialized to random numbers (and learned during th
 When applied to images, ConvNets usually take raw image pixels as input, interleaving convolution layers along with pooling layers with non-linear functions in between, followed by fully connected layers. Similarly, for language processing, ConvNets take the outputs of word embeddings as input, and then apply interleaved convolution and pooling operations, followed by fully connected layers. Figure 3 shows an example ConvNet applied to sentences.
 
 ![ConvNet](NLP-convnet-small.png)
+
 [Figure 3: ConvNets are applied to text by Collobert et. al. (2011). These ConvNets are largely the same as the ones used for object classification on images.
 
 ### Recurrent Neural Networks (RNN)
@@ -74,6 +75,7 @@ Convolutional Neural Networks&mdash;and more generally, feed-forward neural netw
 If you send sentences word-by-word into a feed-forward network, asking it to predict the next word, it will do so, but without any notion of the current context. The animation in Figure 4 shows why context is important.
 
 ![simplePredict](NLP-contextless.gif)
+
 [Figure 4: The importance of context. Predicting the next word, given only the previous word and no context.]
 
 Clearly, without context, you can produce sentences that make no sense. You *can* have context in feed-forward networks, but it is much more natural to add a recurrent connection.
