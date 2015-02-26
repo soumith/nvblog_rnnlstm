@@ -13,17 +13,26 @@ As an example, language understanding gives one the capability to understand tha
 
 and 
 
-> "I'm driving back home"
+> "I'm driving back home."
 
-both convey the information that you are going home.
+both convey the information that the speaker is going home.
 
 # Word Maps and Language Models
 
-For a machine to understand language, it first has to develop a mental map of words, their meaning and interaction with other words. It needs to build a dictionary of words, and understand where they stand semantically and contextually, compared to other words in their dictionary. To achieve this, each word is mapped to a set of numbers in a high-dimensional space, which are called "word embeddings". Similar words are close to each other in this number space, and dissimilar words are far apart. Some word embeddings encode mathematical properties such as addition and subtraction (For some examples, see Table 1).
+For a machine to understand language, it first has to develop a mental map of words, their meanings and interactions with other words. It needs to build a dictionary of words, and understand where they stand semantically and contextually, compared to other words in their dictionary. To achieve this, each word is mapped to a set of numbers in a high-dimensional space, which are called "word embeddings". Similar words are close to each other in this number space, and dissimilar words are far apart. Some word embeddings encode mathematical properties such as addition and subtraction (For some examples, see Table 1).
 
 Word embeddings can either be learned in a general-purpose fashion before-hand by reading large amounts of text (like Wikipedia), or specially learned for a particular task (like sentiment analysis). We go into a little more detail on learning word embeddings in a later section.
 
-![Word Embeddings](NLP-linguistic_regularities_in_WE.png)
+
+| Expression                             | Nearest Token       |
+|----------------------------------------|---------------------|
+| Paris - France + Italy                 | Rome                |
+| bigger - big + cold                    | colder              |
+| sushi - Japan + Germany                | bratwurst           |
+| Cu - copper + gold                     | Au                  |
+| Windows - Microsoft + Google           | Android             |
+| Montral Canadiens - Montreal + Toronto | Toronto Maple Leafs |
+
 [Table 1: Mikolov et. al. [3] showcase simple additive properties of their word embeddings.]
 
 After the machine has learned word embeddings, the next problem to tackle is the ability to string words together appropriately in small, grammatically correct sentences which make sense. This is called [language modeling](http://en.wikipedia.org/wiki/Language_model). Language modeling is one part of quantifying how well the machine understands language. 
@@ -54,7 +63,7 @@ Word embeddings are not unique to neural networks; they are common to all word-l
 
 ![Lookup Table](NLP-lookuptable.png)
 
-*Figure 2: Word embeddings are usually stored in a simple lookup table. Given a word, the word vector of numbers is returned. Given a sentence, a matrix with vectors of each word in the sentence are returned.*
+*Figure 2: Word embeddings are usually stored in a simple lookup table. Given a word, the word vector of numbers is returned. Given a sentence, a matrix of vectors for each word in the sentence is returned.*
 
 Word embeddings are usually initialized to random numbers (and learned during the training phase of the neural network), or initialized from previously trained models over large texts like Wikipedia.
 
@@ -100,7 +109,8 @@ Long Short Term Memory (LSTM) [6] units try to address the problem of such long-
 
 Figure 6: Illustration of an LSTM unit from Srivistava et. al. [8]. The input gate controls the amount of current input to be remembered, the output gate controls the amount of the current memory to be given as output to the next stage, and the erase gate controls what part of the memory cell is erased and retained in the current time step. 
 
-An exact understanding of how LSTM works is unclear, and is a topic of contemporary research. However, it is known that LSTM outperforms conventional RNNs on many tasks. 
+Exactly how LSTM works is unclear; fully understanding it is a topic of contemporary research. However, it is known that LSTM outperforms conventional RNNs on many tasks. 
+
 
 ## Torch + cuDNN + cuBLAS: Implementing ConvNets and Recurrent Nets efficiently
 
@@ -167,9 +177,8 @@ With these few lines of code we can create powerful state-of-the-art neural netw
 To use NVIDIA cuDNN in Torch, simply replace the prefix `nn.` with `cudnn.`. cuDNN accelerates the training of neural networks compared to Torch's default CUDA backend (sometimes up to 30%) and is often several orders of magnitude faster than using CPUs.
 
 For language modeling, we've implemented an RNN-LSTM neural network [9] using Torch. It gives state-of-the-art results on a standard quality metric called perplexity. [The full source of this implementation is available here](https://github.com/wojzaremba/lstm).
-We compare the training time of the network on an Intel Core i7 2.6 GHZ vs accelerating it on an NVIDIA GTX 980 GPU. 
 
-Shown in the Table 1 are the times for a small RNN and a larger RNN. [The full source of this implementation is here](https://github.com/wojzaremba/lstm).
+We compare the training time of the network on an Intel Core i7 2.6 GHZ vs accelerating it on an NVIDIA GeForce GTX 980 GPU. Table 2 shows the training times and GPU speedups for a small RNN and a larger RNN. [The full source of this implementation is here](https://github.com/wojzaremba/lstm).
 
 | Device                | Small-RNN | Large-RNN |
 |-----------------------|-----------|-----------|
@@ -177,7 +186,7 @@ Shown in the Table 1 are the times for a small RNN and a larger RNN. [The full s
 | NVIDIA GTX 980        |   30 mins | 1006 mins |
 | Speedup               |  5.2x     | 9.29x     |
 
-Table 1: Training times of a state-of-the-art recurrent network with LSTM cells on CPU vs GPU
+Table 2: Training times of a state-of-the-art recurrent network with LSTM cells on CPU vs GPU.
 
 ## Beyond Natural Language: Learning to do math and execute Python programs
 
@@ -187,7 +196,7 @@ We trained an LSTM-RNN to predict the result of addition of two decimal numbers,
 
 > 123 + 19 = ____
 
-Here, the correct answer consists of 4 characters: "1", "4", "2", and the end of sequence character. Surprisingly, an LSTM with small tweaks is able to learn with 99% accuracy how to add numbers which are upto 9 digits.
+Here, the correct answer consists of 4 characters: "1", "4", "2", and the end of sequence character. Surprisingly, an LSTM with small tweaks is able to learn with 99% accuracy how to add numbers of up to 9 digits.
 
 > 13828700 + 10188872 = 24017572
 
@@ -208,6 +217,12 @@ target output: -1820700
 Once again LSTM proved to be powerful enough to somewhat learn the mapping from programs to program execution results. Prediction performance is far from 100%, which is achievable by a standard python interpreter. However, the LSTM gives far better prediction than pure chance.
 
 How to make RNN-LSTM models even more powerful remains a research challenge. We bet that an LSTM which would be as powerful as a python interpreter should also be good for natural language processing tasks. The only difference between these tasks is the underlying language: Python vs. English!
+
+## Learn More at GTC 2015
+
+If you’re interested in learning more about this work, Soumith Chintala will be leading a [hands-on lab](http://devblogs.nvidia.com/parallelforall/learn-gpu-computing-with-hands-on-labs-gtc-2015/) called "[Applied Deep Learning for Vision, Natural Language and Audio with Torch7](http://registration.gputechconf.com/quicklink/ii4Mu3a)" at the 2015 GPU Technology Conference at 3:30PM Wednesday, March 18 in room 211A San Jose Convention Center (session S5574).
+
+*With dozens of sessions on [Machine Learning and Deep Learning](http://registration.gputechconf.com/quicklink/6kLCs63), you’ll find that GTC is the place to learn about machine learning in 2015! Readers of Parallel Forall can use the discount code GM15PFAB to get 20% off any conference pass! [Register Now!](http://www.gputechconf.com)*
 
 #### References
 
