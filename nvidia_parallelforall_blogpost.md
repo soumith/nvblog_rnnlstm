@@ -103,11 +103,11 @@ RNNs keep context in their hidden state (which can be seen as memory). However, 
 
 The probability of the word `apple` should be much higher than any other edible like `banana` or `spaghetti`, because the previous sentence mentioned that you bought an `apple`. Furthermore, any edible is a much better fit than non-edibles like `car`, or `cat`.
 
-Long Short Term Memory (LSTM) [6] units try to address the problem of such long-term dependencies. LSTM has multiple gates that act as a differentiable RAM memory. Access to memory cells is guarded by `update`, and `forget` gates. Information stored in memory cells is available to the LSTM for a much longer time than in a classical RNN, which allows the model to make more context-aware predictions. An LSTM unit is shown in Figure 6.
+Long Short Term Memory (LSTM) [6] units try to address the problem of such long-term dependencies. LSTM has multiple gates that act as a differentiable RAM memory. Access to memory cells is guarded by `read`,`write` and `erase` gates. Information stored in memory cells is available to the LSTM for a much longer time than in a classical RNN, which allows the model to make more context-aware predictions. An LSTM unit is shown in Figure 6.
 
 ![LSTM](NLP-lstm.png)
 
-Figure 6: Illustration of an LSTM unit from Srivistava et. al. [8]. The input gate controls the amount of current input to be remembered, the output gate controls the amount of the current memory to be given as output to the next stage, and the erase gate controls what part of the memory cell is erased and retained in the current time step. 
+Figure 6: Illustration of an LSTM unit. The write gate controls the amount of current input to be remembered for the future, the read gate controls the amount of the current memory to be given as output to the next stage, and the erase gate controls what part of the memory cell is erased or retained in the current time step. 
 
 Exactly how LSTM works is unclear; fully understanding it is a topic of contemporary research. However, it is known that LSTM outperforms conventional RNNs on many tasks. 
 
@@ -233,8 +233,7 @@ If you’re interested in learning more about this work, Soumith Chintala will b
 5. Zaremba, Wojciech, and Ilya Sutskever. "Learning to execute." arXiv preprint arXiv:1410.4615 (2014).
 6. Hochreiter, Sepp, and Jürgen Schmidhuber. "Long short-term memory." Neural computation 9.8 (1997): 1735-1780.
 7. Collobert, Ronan, Koray Kavukcuoglu, and Clément Farabet. "Torch7: A matlab-like environment for machine learning." BigLearn, NIPS Workshop. No. EPFL-CONF-192376. 2011.
-8. Srivastava, Nitish, Elman Mansimov, and Ruslan Salakhutdinov. "Unsupervised Learning of Video Representations using LSTMs." arXiv preprint arXiv:1502.04681 (2015).
-9. Zaremba, Wojciech, Ilya Sutskever, and Oriol Vinyals. "Recurrent neural network regularization." arXiv preprint arXiv:1409.2329 (2014).
+8. Zaremba, Wojciech, Ilya Sutskever, and Oriol Vinyals. "Recurrent neural network regularization." arXiv preprint arXiv:1409.2329 (2014).
 10. http://torch.ch
 11. https://github.com/wojzaremba/lstm
 12. https://github.com/wojciechz/learning_to_execute
