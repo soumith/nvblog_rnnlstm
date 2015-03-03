@@ -1,0 +1,1219 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><style>body {
+  width: 45em;
+  border: 1px solid #ddd;
+  outline: 1300px solid #fff;
+  margin: 16px auto;
+}
+
+body .markdown-body
+{
+  padding: 30px;
+}
+
+@font-face {
+  font-family: fontawesome-mini;
+  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+
+@font-face {
+  font-family: octicons-anchor;
+  src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+
+.markdown-body {
+  font-family: sans-serif;
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  color: #333333;
+  overflow: hidden;
+  font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  word-wrap: break-word;
+}
+
+.markdown-body a {
+  background: transparent;
+}
+
+.markdown-body a:active,
+.markdown-body a:hover {
+  outline: 0;
+}
+
+.markdown-body b,
+.markdown-body strong {
+  font-weight: bold;
+}
+
+.markdown-body mark {
+  background: #ff0;
+  color: #000;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body sub,
+.markdown-body sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+.markdown-body sup {
+  top: -0.5em;
+}
+.markdown-body sub {
+  bottom: -0.25em;
+}
+
+.markdown-body h1 {
+  font-size: 2em;
+  margin: 0.67em 0;
+}
+
+.markdown-body img {
+  border: 0;
+}
+
+.markdown-body hr {
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  height: 0;
+}
+
+.markdown-body pre {
+  overflow: auto;
+}
+
+.markdown-body code,
+.markdown-body kbd,
+.markdown-body pre,
+.markdown-body samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+.markdown-body input {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
+.markdown-body html input[disabled] {
+  cursor: default;
+}
+
+.markdown-body input {
+  line-height: normal;
+}
+
+.markdown-body input[type="checkbox"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.markdown-body table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.markdown-body td,
+.markdown-body th {
+  padding: 0;
+}
+
+.markdown-body .codehilitetable {
+  border: 0;
+  border-spacing: 0;
+}
+
+.markdown-body .codehilitetable tr {
+  border: 0;
+}
+
+.markdown-body .codehilitetable pre,
+.markdown-body .codehilitetable div.codehilite {
+  margin: 0;
+}
+
+.markdown-body .linenos,
+.markdown-body .code,
+.markdown-body .codehilitetable td {
+  border: 0;
+  padding: 0;
+}
+
+.markdown-body td:not(.linenos) .linenodiv {
+  padding: 0 !important;
+}
+
+.markdown-body .code {
+  width: 100%;
+}
+
+.markdown-body .linenos div pre,
+.markdown-body .linenodiv pre,
+.markdown-body .linenodiv {
+  border: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-border-top-left-radius: 3px;
+  -webkit-border-bottom-left-radius: 3px;
+  -moz-border-radius-topleft: 3px;
+  -moz-border-radius-bottomleft: 3px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+.markdown-body .code div pre,
+.markdown-body .code div {
+  border: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  -webkit-border-top-right-radius: 3px;
+  -webkit-border-bottom-right-radius: 3px;
+  -moz-border-radius-topright: 3px;
+  -moz-border-radius-bottomright: 3px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+.markdown-body * {
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body input {
+  font: 13px Helvetica, arial, freesans, clean, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+  line-height: 1.4;
+}
+
+.markdown-body a {
+  color: #4183c4;
+  text-decoration: none;
+}
+
+.markdown-body a:hover,
+.markdown-body a:focus,
+.markdown-body a:active {
+  text-decoration: underline;
+}
+
+.markdown-body hr {
+  height: 0;
+  margin: 15px 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.markdown-body hr:before,
+.markdown-body hr:after {
+  display: table;
+  content: " ";
+}
+
+.markdown-body hr:after {
+  clear: both;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  line-height: 1.1;
+}
+
+.markdown-body h1 {
+  font-size: 30px;
+}
+
+.markdown-body h2 {
+  font-size: 21px;
+}
+
+.markdown-body h3 {
+  font-size: 16px;
+}
+
+.markdown-body h4 {
+  font-size: 14px;
+}
+
+.markdown-body h5 {
+  font-size: 12px;
+}
+
+.markdown-body h6 {
+  font-size: 11px;
+}
+
+.markdown-body blockquote {
+  margin: 0;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body ol ol,
+.markdown-body ul ol {
+  list-style-type: lower-roman;
+}
+
+.markdown-body ul ul ol,
+.markdown-body ul ol ol,
+.markdown-body ol ul ol,
+.markdown-body ol ol ol {
+  list-style-type: lower-alpha;
+}
+
+.markdown-body dd {
+  margin-left: 0;
+}
+
+.markdown-body code,
+.markdown-body pre,
+.markdown-body samp {
+  font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  font-size: 12px;
+}
+
+.markdown-body pre {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body kbd {
+  background-color: #e7e7e7;
+  background-image: -moz-linear-gradient(#fefefe, #e7e7e7);
+  background-image: -webkit-linear-gradient(#fefefe, #e7e7e7);
+  background-image: linear-gradient(#fefefe, #e7e7e7);
+  background-repeat: repeat-x;
+  border-radius: 2px;
+  border: 1px solid #cfcfcf;
+  color: #000;
+  padding: 3px 5px;
+  line-height: 10px;
+  font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  display: inline-block;
+}
+
+.markdown-body>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+.markdown-body .headeranchor-link {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  padding-right: 6px;
+  padding-left: 30px;
+  margin-left: -30px;
+}
+
+.markdown-body .headeranchor-link:focus {
+  outline: none;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4,
+.markdown-body h5,
+.markdown-body h6 {
+  position: relative;
+  margin-top: 1em;
+  margin-bottom: 16px;
+  font-weight: bold;
+  line-height: 1.4;
+}
+
+.markdown-body h1 .headeranchor,
+.markdown-body h2 .headeranchor,
+.markdown-body h3 .headeranchor,
+.markdown-body h4 .headeranchor,
+.markdown-body h5 .headeranchor,
+.markdown-body h6 .headeranchor {
+  display: none;
+  color: #000;
+  vertical-align: middle;
+}
+
+.markdown-body h1:hover .headeranchor-link,
+.markdown-body h2:hover .headeranchor-link,
+.markdown-body h3:hover .headeranchor-link,
+.markdown-body h4:hover .headeranchor-link,
+.markdown-body h5:hover .headeranchor-link,
+.markdown-body h6:hover .headeranchor-link {
+  height: 1em;
+  padding-left: 8px;
+  margin-left: -30px;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.markdown-body h1:hover .headeranchor-link .headeranchor,
+.markdown-body h2:hover .headeranchor-link .headeranchor,
+.markdown-body h3:hover .headeranchor-link .headeranchor,
+.markdown-body h4:hover .headeranchor-link .headeranchor,
+.markdown-body h5:hover .headeranchor-link .headeranchor,
+.markdown-body h6:hover .headeranchor-link .headeranchor {
+  display: inline-block;
+}
+
+.markdown-body h1 {
+  padding-bottom: 0.3em;
+  font-size: 2.25em;
+  line-height: 1.2;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h2 {
+  padding-bottom: 0.3em;
+  font-size: 1.75em;
+  line-height: 1.225;
+  border-bottom: 1px solid #eee;
+}
+
+.markdown-body h3 {
+  font-size: 1.5em;
+  line-height: 1.43;
+}
+
+.markdown-body h4 {
+  font-size: 1.25em;
+}
+
+.markdown-body h5 {
+  font-size: 1em;
+}
+
+.markdown-body h6 {
+  font-size: 1em;
+  color: #777;
+}
+
+.markdown-body p,
+.markdown-body blockquote,
+.markdown-body ul,
+.markdown-body ol,
+.markdown-body dl,
+.markdown-body table,
+.markdown-body pre,
+.markdown-body .admonition {
+  margin-top: 0;
+  margin-bottom: 16px;
+}
+
+.markdown-body hr {
+  height: 4px;
+  padding: 0;
+  margin: 16px 0;
+  background-color: #e7e7e7;
+  border: 0 none;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  padding-left: 2em;
+}
+
+.markdown-body ul ul,
+.markdown-body ul ol,
+.markdown-body ol ol,
+.markdown-body ol ul {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.markdown-body li>p {
+  margin-top: 16px;
+}
+
+.markdown-body dl {
+  padding: 0;
+}
+
+.markdown-body dl dt {
+  padding: 0;
+  margin-top: 16px;
+  font-size: 1em;
+  font-style: italic;
+  font-weight: bold;
+}
+
+.markdown-body dl dd {
+  padding: 0 16px;
+  margin-bottom: 16px;
+}
+
+.markdown-body blockquote {
+  padding: 0 15px;
+  color: #777;
+  border-left: 4px solid #ddd;
+}
+
+.markdown-body blockquote>:first-child {
+  margin-top: 0;
+}
+
+.markdown-body blockquote>:last-child {
+  margin-bottom: 0;
+}
+
+.markdown-body table {
+  display: block;
+  width: 100%;
+  overflow: auto;
+  word-break: normal;
+  word-break: keep-all;
+}
+
+.markdown-body table th {
+  font-weight: bold;
+}
+
+.markdown-body table th,
+.markdown-body table td {
+  padding: 6px 13px;
+  border: 1px solid #ddd;
+}
+
+.markdown-body table tr {
+  background-color: #fff;
+  border-top: 1px solid #ccc;
+}
+
+.markdown-body table tr:nth-child(2n) {
+  background-color: #f8f8f8;
+}
+
+.markdown-body img {
+  max-width: 100%;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.markdown-body code,
+.markdown-body samp {
+  padding: 0;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  margin: 0;
+  font-size: 85%;
+  background-color: rgba(0,0,0,0.04);
+  border-radius: 3px;
+}
+
+.markdown-body code:before,
+.markdown-body code:after {
+  letter-spacing: -0.2em;
+  content: "\00a0";
+}
+
+.markdown-body pre>code {
+  padding: 0;
+  margin: 0;
+  font-size: 100%;
+  word-break: normal;
+  white-space: pre;
+  background: transparent;
+  border: 0;
+}
+
+.markdown-body .codehilite {
+  margin-bottom: 16px;
+}
+
+.markdown-body .codehilite pre,
+.markdown-body pre {
+  padding: 16px;
+  overflow: auto;
+  font-size: 85%;
+  line-height: 1.45;
+  background-color: #f7f7f7;
+  border-radius: 3px;
+}
+
+.markdown-body .codehilite pre {
+  margin-bottom: 0;
+  word-break: normal;
+}
+
+.markdown-body pre {
+  word-wrap: normal;
+}
+
+.markdown-body pre code {
+  display: inline;
+  max-width: initial;
+  padding: 0;
+  margin: 0;
+  overflow: initial;
+  line-height: inherit;
+  word-wrap: normal;
+  background-color: transparent;
+  border: 0;
+}
+
+.markdown-body pre code:before,
+.markdown-body pre code:after {
+  content: normal;
+}
+
+/* Admonition */
+.markdown-body .admonition {
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  position: relative;
+  border-radius: 3px;
+  border: 1px solid #e0e0e0;
+  border-left: 6px solid #333;
+  padding: 10px 10px 10px 30px;
+}
+
+.markdown-body .admonition table {
+  color: #333;
+}
+
+.markdown-body .admonition p {
+  padding: 0;
+}
+
+.markdown-body .admonition-title {
+  font-weight: bold;
+  margin: 0;
+}
+
+.markdown-body .admonition>.admonition-title {
+  color: #333;
+}
+
+.markdown-body .attention>.admonition-title {
+  color: #a6d796;
+}
+
+.markdown-body .caution>.admonition-title {
+  color: #d7a796;
+}
+
+.markdown-body .hint>.admonition-title {
+  color: #96c6d7;
+}
+
+.markdown-body .danger>.admonition-title {
+  color: #c25f77;
+}
+
+.markdown-body .question>.admonition-title {
+  color: #96a6d7;
+}
+
+.markdown-body .note>.admonition-title {
+  color: #d7c896;
+}
+
+.markdown-body .admonition:before,
+.markdown-body .attention:before,
+.markdown-body .caution:before,
+.markdown-body .hint:before,
+.markdown-body .danger:before,
+.markdown-body .question:before,
+.markdown-body .note:before {
+  font: normal normal 16px fontawesome-mini;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  line-height: 1.5;
+  color: #333;
+  position: absolute;
+  left: 0;
+  top: 0;
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+.markdown-body .admonition:before {
+  content: "\f056\00a0";
+  color: 333;
+}
+
+.markdown-body .attention:before {
+  content: "\f058\00a0";
+  color: #a6d796;
+}
+
+.markdown-body .caution:before {
+  content: "\f06a\00a0";
+  color: #d7a796;
+}
+
+.markdown-body .hint:before {
+  content: "\f05a\00a0";
+  color: #96c6d7;
+}
+
+.markdown-body .danger:before {
+  content: "\f057\00a0";
+  color: #c25f77;
+}
+
+.markdown-body .question:before {
+  content: "\f059\00a0";
+  color: #96a6d7;
+}
+
+.markdown-body .note:before {
+  content: "\f040\00a0";
+  color: #d7c896;
+}
+
+.markdown-body .admonition::after {
+  content: normal;
+}
+
+.markdown-body .attention {
+  border-left: 6px solid #a6d796;
+}
+
+.markdown-body .caution {
+  border-left: 6px solid #d7a796;
+}
+
+.markdown-body .hint {
+  border-left: 6px solid #96c6d7;
+}
+
+.markdown-body .danger {
+  border-left: 6px solid #c25f77;
+}
+
+.markdown-body .question {
+  border-left: 6px solid #96a6d7;
+}
+
+.markdown-body .note {
+  border-left: 6px solid #d7c896;
+}
+
+.markdown-body .admonition>*:first-child {
+  margin-top: 0 !important;
+}
+
+.markdown-body .admonition>*:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* progress bar*/
+.markdown-body .progress {
+  display: block;
+  width: 300px;
+  margin: 10px 0;
+  height: 24px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #ededed;
+  position: relative;
+  box-shadow: inset -1px 1px 3px rgba(0, 0, 0, .1);
+}
+
+.markdown-body .progress-label {
+  position: absolute;
+  text-align: center;
+  font-weight: bold;
+  width: 100%; margin: 0;
+  line-height: 24px;
+  color: #333;
+  text-shadow: 1px 1px 0 #fefefe, -1px -1px 0 #fefefe, -1px 1px 0 #fefefe, 1px -1px 0 #fefefe, 0 1px 0 #fefefe, 0 -1px 0 #fefefe, 1px 0 0 #fefefe, -1px 0 0 #fefefe, 1px 1px 2px #000;
+  -webkit-font-smoothing: antialiased !important;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.markdown-body .progress-bar {
+  height: 24px;
+  float: left;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background-color: #96c6d7;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .5), inset 0 -1px 0 rgba(0, 0, 0, .1);
+  background-size: 30px 30px;
+  background-image: -webkit-linear-gradient(
+    135deg, rgba(255, 255, 255, .4) 27%,
+    transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%,
+    transparent 77%, transparent
+  );
+  background-image: -moz-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: -ms-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: -o-linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+  background-image: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, .4) 27%, transparent 27%,
+    transparent 52%, rgba(255, 255, 255, .4) 52%,
+    rgba(255, 255, 255, .4) 77%, transparent 77%,
+    transparent
+  );
+}
+
+.markdown-body .progress-100plus .progress-bar {
+  background-color: #a6d796;
+}
+
+.markdown-body .progress-80plus .progress-bar {
+  background-color: #c6d796;
+}
+
+.markdown-body .progress-60plus .progress-bar {
+  background-color: #d7c896;
+}
+
+.markdown-body .progress-40plus .progress-bar {
+  background-color: #d7a796;
+}
+
+.markdown-body .progress-20plus .progress-bar {
+  background-color: #d796a6;
+}
+
+.markdown-body .progress-0plus .progress-bar {
+  background-color: #c25f77;
+}
+
+.markdown-body .candystripe-animate .progress-bar{
+  -webkit-animation: animate-stripes 3s linear infinite;
+  -moz-animation: animate-stripes 3s linear infinite;
+  animation: animate-stripes 3s linear infinite;
+}
+
+@-webkit-keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+@-moz-keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+@keyframes animate-stripes {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 60px 0;
+  }
+}
+
+.markdown-body .gloss .progress-bar {
+  box-shadow:
+    inset 0 4px 12px rgba(255, 255, 255, .7),
+    inset 0 -12px 0 rgba(0, 0, 0, .05);
+}
+
+/* Multimarkdown Critic Blocks */
+.markdown-body .critic_mark {
+  background: #ff0;
+}
+
+.markdown-body .critic_delete {
+  color: #c82829;
+  text-decoration: line-through;
+}
+
+.markdown-body .critic_insert {
+  color: #718c00 ;
+  text-decoration: underline;
+}
+
+.markdown-body .critic_comment {
+  color: #8e908c;
+  font-style: italic;
+}
+
+.markdown-body .headeranchor {
+  font: normal normal 16px octicons-anchor;
+  line-height: 1;
+  display: inline-block;
+  text-decoration: none;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.headeranchor:before {
+  content: '\f05c';
+}
+
+.markdown-body .task-list-item {
+  list-style-type: none;
+}
+
+.markdown-body .task-list-item+.task-list-item {
+  margin-top: 3px;
+}
+
+.markdown-body .task-list-item input {
+  margin: 0 4px 0.25em -20px;
+  vertical-align: middle;
+}
+
+/* Media */
+@media only screen and (min-width: 480px) {
+  .markdown-body {
+    font-size:14px;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .markdown-body {
+    font-size:16px;
+  }
+}
+
+@media print {
+  .markdown-body * {
+    background: transparent !important;
+    color: black !important;
+    filter:none !important;
+    -ms-filter: none !important;
+  }
+
+  .markdown-body {
+    font-size:12pt;
+    max-width:100%;
+    outline:none;
+    border: 0;
+  }
+
+  .markdown-body a,
+  .markdown-body a:visited {
+    text-decoration: underline;
+  }
+
+  .markdown-body .headeranchor-link {
+    display: none;
+  }
+
+  .markdown-body a[href]:after {
+    content: " (" attr(href) ")";
+  }
+
+  .markdown-body abbr[title]:after {
+    content: " (" attr(title) ")";
+  }
+
+  .markdown-body .ir a:after,
+  .markdown-body a[href^="javascript:"]:after,
+  .markdown-body a[href^="#"]:after {
+    content: "";
+  }
+
+  .markdown-body pre {
+    white-space: pre;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  .markdown-body pre,
+  .markdown-body blockquote {
+    border: 1px solid #999;
+    padding-right: 1em;
+    page-break-inside: avoid;
+  }
+
+  .markdown-body .progress,
+  .markdown-body .progress-bar {
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+  }
+
+  .markdown-body .progress {
+    border: 1px solid #ddd;
+  }
+
+  .markdown-body .progress-bar {
+    height: 22px;
+    border-right: 1px solid #ddd;
+  }
+
+  .markdown-body tr,
+  .markdown-body img {
+    page-break-inside: avoid;
+  }
+
+  .markdown-body img {
+    max-width: 100% !important;
+  }
+
+  .markdown-body p,
+  .markdown-body h2,
+  .markdown-body h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  .markdown-body h2,
+  .markdown-body h3 {
+    page-break-after: avoid;
+  }
+}
+</style><title>nvidia_parallelforall_blogpost</title></head><body><article class="markdown-body"><h1 id="understanding-natural-language-with-deep-neural-networks-using-torch"><a name="user-content-understanding-natural-language-with-deep-neural-networks-using-torch" href="#understanding-natural-language-with-deep-neural-networks-using-torch" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Understanding Natural Language with Deep Neural Networks Using Torch</h1>
+<p><em>This post was written by Soumith Chintala and Wojciech Zaremba of Facebook.</em></p>
+<p>Language is the medium of human communication. Giving machines the ability to learn and understand language enables products and possibilities that are not imaginable today.</p>
+<p>One can understand language at varying granularities. When you learn a new language, you start with words: understanding their meaning, identifying similar and dissimilar words, and developing a sense of contextual appropriateness of a word. You start with a small dictionary of words, building up your dictionary over time, mentally mapping each newly learned word close to similar words in your dictionary. Once you get familiar with your dictionary of words, you put them together into small sentences, learning grammar and structure. You eventually combine sentences in a sensible way, to write paragraphs and pages. Once you get to this stage, you are comfortable with expressing complicated thoughts in language, letting others understand your thoughts and expression.</p>
+<p>As an example, language understanding gives one the ability to understand that the sentences <em>&ldquo;I&rsquo;m on my way home.&rdquo;</em> and <em>&ldquo;I&rsquo;m driving back home.&rdquo;</em> both convey that the speaker is going home.</p>
+<h2 id="word-maps-and-language-models"><a name="user-content-word-maps-and-language-models" href="#word-maps-and-language-models" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Word Maps and Language Models</h2>
+<p>For a machine to understand language, it first has to develop a mental map of words, their meanings and interactions with other words. It needs to build a dictionary of words, and understand where they stand semantically and contextually, compared to other words in their dictionary. To achieve this, each word is mapped to a set of numbers in a high-dimensional space, which are called &ldquo;word embeddings&rdquo;. Similar words are close to each other in this number space, and dissimilar words are far apart. Some word embeddings encode mathematical properties such as addition and subtraction (For some examples, see Table 1).</p>
+<p>Word embeddings can either be learned in a general-purpose fashion before-hand by reading large amounts of text (like Wikipedia), or specially learned for a particular task (like sentiment analysis). We go into a little more detail on learning word embeddings in a later section.</p>
+<table>
+<caption align="bottom">Table 1: Mikolov et. al. [3] showcase simple additive properties of their word embeddings.</caption>
+<thead>
+<tr>
+<th>Expression</th>
+<th>Nearest Token</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Paris - France + Italy</td>
+<td>Rome</td>
+</tr>
+<tr>
+<td>bigger - big + cold</td>
+<td>colder</td>
+</tr>
+<tr>
+<td>sushi - Japan + Germany</td>
+<td>bratwurst</td>
+</tr>
+<tr>
+<td>Cu - copper + gold</td>
+<td>Au</td>
+</tr>
+<tr>
+<td>Windows - Microsoft + Google</td>
+<td>Android</td>
+</tr>
+<tr>
+<td>Montral Canadiens - Montreal + Toronto</td>
+<td>Toronto Maple Leafs</td>
+</tr>
+</tbody>
+</table>
+
+<p>After the machine has learned word embeddings, the next problem to tackle is the ability to string words together appropriately in small, grammatically correct sentences which make sense. This is called <a href="http://en.wikipedia.org/wiki/Language_model">language modeling</a>. Language modeling is one part of quantifying how well the machine understands language. </p>
+<p>For example, given a sentence (&ldquo;I am eating pasta for lunch.&rdquo;), and a word (&ldquo;cars&rdquo;), if the machine can tell you with high confidence whether or not the word is relevant to the sentence (&ldquo;cars&rdquo; is related to this sentence with a probability 0.01 and I am pretty confident about it), then that indicates that the machine understands something about words and contexts.</p>
+<p>An even simpler metric is to predict the next word in the sentence. Given a sentence, for each word in its dictionary the machine assigns a probability of the word&rsquo;s likeliness to appear next in the sentence. For example:</p>
+<blockquote>
+<p>&ldquo;I am eating _____&rdquo;</p>
+</blockquote>
+<p>To fill in the blank, a good language model would likely give higher probabilities to all edibles like &ldquo;pasta&rdquo;, &ldquo;apple&rdquo;, or &ldquo;chocolate&rdquo;, and it would give lower probability to other words in the dictionary which are contextually irrelevant like &ldquo;taxi&rdquo;, &ldquo;building&rdquo;, or &ldquo;music&rdquo;.</p>
+<p>Traditionally language modeling has been done by computing <em>n-grams</em>&mdash;groups of words&mdash;and processing the n-grams further with heuristics, before feeding them into machine learning models. For example, the <em>2-grams</em> for the sentence <em>&ldquo;I am eating an apple.&rdquo;</em> are &ldquo;I am&rdquo;, &ldquo;am eating&rdquo;, &ldquo;eating an&rdquo;, and &ldquo;an apple&rdquo;.</p>
+<p>When you read a large body of text, like wikipedia, you could generate a new sentence by pairing together 2-grams and 3-grams and matching them with other pairs that were seen before. Sentences generated this way might be grammatically correct, but they can also be totally non-sensical. Over the last few years, deep neural networks have beaten n-gram based models comfortably on a wide variety of natural language tasks.</p>
+<h2 id="deep-neural-networks-for-language"><a name="user-content-deep-neural-networks-for-language" href="#deep-neural-networks-for-language" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Deep neural networks for Language</h2>
+<p>Deep learning&mdash;neural networks that have several stacked layers of neurons, usually accelerated in computation using GPUs&mdash;has seen huge success recently in many fields such as computer vision, speech recognition, and natural language processing, beating the previous state-of-the-art results on a variety of tasks and domains such as language modeling, translation, speech recognition, and object recognition in images. </p>
+<p>Within neural networks, there are certain kinds of neural networks that are more popular and well-suited than others to a variety of problems. Continuing on the topic of word embeddings, let&rsquo;s discuss word-level networks, where each word in the sentence is translated into a set of numbers before being fed into the neural network. These numbers change over time while the neural net trains itself, encoding unique properties such as the semantics and contextual information for each word.</p>
+<p>Word embeddings are not unique to neural networks; they are common to all word-level neural language models. Embeddings are stored in a simple lookup table (or hash table), that given a word, returns the embedding (which is an array of numbers). Figure 1 shows an example.</p>
+<p><img alt="Lookup Table" src="/Users/mharris/src/nvblog_rnnlstm/NLP-lookuptable.png" /></p>
+<p><em>Figure 1: Word embeddings are usually stored in a simple lookup table. Given a word, the word vector of numbers is returned. Given a sentence, a matrix of vectors for each word in the sentence is returned.</em></p>
+<p>Word embeddings are usually initialized to random numbers (and learned during the training phase of the neural network), or initialized from previously trained models over large texts like Wikipedia.</p>
+<h3 id="feed-forward-convolutional-neural-networks"><a name="user-content-feed-forward-convolutional-neural-networks" href="#feed-forward-convolutional-neural-networks" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Feed-forward Convolutional Neural Networks</h3>
+<p><em>Convolutional Neural Networks</em> (ConvNets), which were covered in <a href="http://devblogs.nvidia.com/parallelforall/deep-learning-computer-vision-caffe-cudnn/">a previous Parallel Forall post by Evan Shelhamer</a>, have enjoyed wide success in the last few years in several domains including images, video, audio and natural language processing.</p>
+<p>When applied to images, ConvNets usually take raw image pixels as input, interleaving convolution layers along with pooling layers with non-linear functions in between, followed by fully connected layers. Similarly, for language processing, ConvNets take the outputs of word embeddings as input, and then apply interleaved convolution and pooling operations, followed by fully connected layers. Figure 2 shows an example ConvNet applied to sentences.</p>
+<p><img alt="ConvNet" src="/Users/mharris/src/nvblog_rnnlstm/NLP-convnet-small.png" /></p>
+<p>[Figure 2: ConvNets are applied to text by Collobert et. al. [2]. These ConvNets are largely the same as the ones used for object classification on images.</p>
+<h3 id="recurrent-neural-networks-rnn"><a name="user-content-recurrent-neural-networks-rnn" href="#recurrent-neural-networks-rnn" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Recurrent Neural Networks (RNN)</h3>
+<p>Convolutional Neural Networks&mdash;and more generally, feed-forward neural networks&mdash;do not traditionally have a notion of time or experience unless you explicitly pass samples from the past as input. After they are trained, given an input, they treat it no differently when shown the input the first time or the 100th time. But to tackle some problems, you need to look at past experiences and give a different answer.</p>
+<p>If you send sentences word-by-word into a feed-forward network, asking it to predict the next word, it will do so, but without any notion of the current context. The animation in Figure 3 shows why context is important.</p>
+<p><img alt="simplePredict" src="/Users/mharris/src/nvblog_rnnlstm/NLP-contextless.gif" /></p>
+<p>[Figure 3: The importance of context. Predicting the next word, given only the previous word and no context.]</p>
+<p>Clearly, without context, you can produce sentences that make no sense. You <em>can</em> have context in feed-forward networks, but it is much more natural to add a recurrent connection.</p>
+<p>A Recurrent neural network has the capability to give itself feedback from past experiences. Apart from all the neurons in the network, it maintains a hidden state that changes as it sees different inputs. This hidden state is analogous to short-term memory. It remembers past experiences and bases its current answer on both the current input as well as past experiences. An illustration is shown in Figure 4.</p>
+<p><img alt="recurrent" src="/Users/mharris/src/nvblog_rnnlstm/NLP-recurrent.png" /></p>
+<p>[Figure 4: A recurrent neural network has memory of past experiences. The recurrent connection preserves these experiences and helps the network keep a notion of context.]</p>
+<h3 id="long-short-term-memory-lstm"><a name="user-content-long-short-term-memory-lstm" href="#long-short-term-memory-lstm" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Long Short Term Memory (LSTM)</h3>
+<p>RNNs keep context in their hidden state (which can be seen as memory). However, classical recurrent networks forget context very fast. They take into account very few words from the past while doing prediction. Here is an example of a language modelling problem that requires longer-term memory.</p>
+<blockquote>
+<p>I bought an apple &hellip; I am eating the _____</p>
+</blockquote>
+<p>The probability of the word &ldquo;apple&rdquo; should be much higher than any other edible like &ldquo;banana&rdquo; or &ldquo;spaghetti&rdquo;, because the previous sentence mentioned that you bought an &ldquo;apple&rdquo;. Furthermore, any edible is a much better fit than non-edibles like &ldquo;car&rdquo;, or &ldquo;cat&rdquo;.</p>
+<p>Long Short Term Memory (LSTM) [6] units try to address the problem of such long-term dependencies. LSTM has multiple gates that act as a differentiable RAM memory. Access to memory cells is guarded by &ldquo;read&rdquo;, &ldquo;write&rdquo; and &ldquo;erase&rdquo; gates. Information stored in memory cells is available to the LSTM for a much longer time than in a classical RNN, which allows the model to make more context-aware predictions. An LSTM unit is shown in Figure 5.</p>
+<p><img alt="LSTM" src="/Users/mharris/src/nvblog_rnnlstm/NLP-lstm.png" /></p>
+<p>Figure 5: Illustration of an LSTM unit. The write gate controls the amount of current input to be remembered for the future, the read gate controls the amount of the current memory to be given as output to the next stage, and the erase gate controls what part of the memory cell is erased or retained in the current time step. </p>
+<p>Exactly how LSTM works is unclear, and fully understanding it is a topic of contemporary research. However, it is known that LSTM outperforms conventional RNNs on many tasks. </p>
+<h2 id="torch-cudnn-cublas-implementing-convnets-and-recurrent-nets-efficiently"><a name="user-content-torch-cudnn-cublas-implementing-convnets-and-recurrent-nets-efficiently" href="#torch-cudnn-cublas-implementing-convnets-and-recurrent-nets-efficiently" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Torch + cuDNN + cuBLAS: Implementing ConvNets and Recurrent Nets efficiently</h2>
+<p><a href="http://torch.ch">Torch</a> is a scientific computing framework with packages for neural networks and optimization (among hundreds of others). It is based on the Lua language, which is similar to javascript and is treated as a wrapper for optimized C/C++ and CUDA code.</p>
+<p>At the core of Torch is a powerful tensor library similar to <a href="http://www.numpy.org">Numpy</a>. The Torch tensor library has both CPU and GPU backends. The neural networks package in torch implements <em>modules</em>, which are different kinds of neuron layers, and <em>containers</em>, which can have several modules within them. Modules are like Lego blocks, and can be plugged together to form complicated neural networks.</p>
+<p>Each module implements a function and its derivative. This makes it easy to calculate the derivative of any neuron in the network with respect to the <em>objective function</em> of the network (via the <a href="http://en.wikipedia.org/wiki/Chain_rule">chain rule</a>). The objective function is simply a mathematical formula to calculate how well a model is doing on the given task. Usually, the smaller the objective, the better the model performs.</p>
+<p>The following small example of modules shows how to calculate the element-wise <code>Tanh</code> of an input matrix, by creating an <code>nn.Tanh</code> module and passing the input through it. We calculate the derivative with respect to the objective by passing it in the backward direction.</p>
+<pre><code class="lua">input = torch.randn(100)
+m = nn.Tanh()
+output = m:forward(input)
+InputDerivative = m:backward(input, ObjectiveDerivative)
+</code></pre>
+
+<p>Implementing the ConvNet shown in Figure 2 is also very simple with Torch. In this example, we put all the modules into a <code>Sequential</code> container that chains the modules one after the other.</p>
+<pre><code class="lua">nWordsInDictionary = 100000
+embeddingSize = 100
+sentenceLength = 5
+m = nn.Sequential()   -- a container that chains its modules one after the other
+m:add(nn.LookupTable(nWordsInDictionary, embeddingSize))
+m:add(nn.TemporalConvolution(sentenceLength, 150, embeddingSize))
+m:add(nn.Max(1))
+m:add(nn.Linear(150, 1024))
+m:add(nn.HardTanh())
+m:add(nn.Linear())
+
+m:cuda() -- transfer the model to GPU
+</code></pre>
+
+<p>This ConvNet has :forward and :backward functions that allow you to train your network (on CPUs or GPUs). Here we transfer it to the GPU by calling <code>m:cuda()</code>.</p>
+<p>An extension to the <code>nn</code> package is the <code>nngraph</code> package which lets you build arbitrary acyclic graphs of neural networks. <code>nngraph</code> makes it easier to build complicated modules such as the LSTM memory unit, as the following example code demonstrates.</p>
+<pre><code class="lua">local function lstm(i, prev_c, prev_h)
+  local function new_input_sum()
+    local i2h            = nn.Linear(params.rnn_size, params.rnn_size)
+    local h2h            = nn.Linear(params.rnn_size, params.rnn_size)
+    return nn.CAddTable()({i2h(i), h2h(prev_h)})
+  end
+  local in_gate          = nn.Sigmoid()(new_input_sum())
+  local forget_gate      = nn.Sigmoid()(new_input_sum())
+  local in_gate2         = nn.Tanh()(new_input_sum())
+  local next_c           = nn.CAddTable()({
+  nn.CMulTable()({forget_gate, prev_c}),
+  nn.CMulTable()({in_gate,     in_gate2})
+  })
+  local out_gate         = nn.Sigmoid()(new_input_sum())
+  local next_h           = nn.CMulTable()({out_gate, nn.Tanh()(next_c)})
+  return next_c, next_h
+end
+</code></pre>
+
+<p>With these few lines of code we can create powerful state-of-the-art neural networks, ready for execution on CPUs or GPUs with good efficiency.</p>
+<p><a href="https://developer.nvidia.com/cuBLAS">cuBLAS</a>, and more recently <a href="https://developer.nvidia.com/cuDNN">cuDNN</a>, have accelerated deep learning research quite significantly, and the recent success of deep learning can be partly attributed to these awesome libraries from NVIDIA. [<a href="http://devblogs.nvidia.com/parallelforall/accelerate-machine-learning-cudnn-deep-neural-network-library/">Learn more about cuDNN here!</a>] cuBLAS is automatically used by Torch for performing BLAS operations such as matrix multiplications, and accelerates neural networks significantly compared to CPUs.</p>
+<p>To use NVIDIA cuDNN in Torch, simply replace the prefix <code>nn.</code> with <code>cudnn.</code>. cuDNN accelerates the training of neural networks compared to Torch&rsquo;s default CUDA backend (sometimes up to 30%) and is often several orders of magnitude faster than using CPUs.</p>
+<p>For language modeling, we&rsquo;ve implemented an RNN-LSTM neural network [9] using Torch. It gives state-of-the-art results on a standard quality metric called perplexity. <a href="https://github.com/wojzaremba/lstm">The full source of this implementation is available here</a>.</p>
+<p>We compare the training time of the network on an Intel Core i7 2.6 GHZ vs accelerating it on an NVIDIA GeForce GTX 980 GPU. Table 2 shows the training times and GPU speedups for a small RNN and a larger RNN. <a href="https://github.com/wojzaremba/lstm">The full source of this implementation is here</a>.</p>
+<table>
+<caption align="bottom">Table 2: Training times of a state-of-the-art recurrent network with LSTM cells on CPU vs GPU.</caption>
+<thead>
+<tr>
+<th>Device</th>
+<th>Small-RNN</th>
+<th>Large-RNN</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Intel Core i7 2.6 GHZ</td>
+<td>156 mins</td>
+<td>9351 mins</td>
+</tr>
+<tr>
+<td>NVIDIA GTX 980</td>
+<td>30 mins</td>
+<td>1006 mins</td>
+</tr>
+<tr>
+<td>Speedup</td>
+<td>5.2x</td>
+<td>9.29x</td>
+</tr>
+</tbody>
+</table>
+
+<h2 id="beyond-natural-language-learning-to-do-math-and-execute-python-programs"><a name="user-content-beyond-natural-language-learning-to-do-math-and-execute-python-programs" href="#beyond-natural-language-learning-to-do-math-and-execute-python-programs" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Beyond Natural Language: Learning to do math and execute Python programs</h2>
+<p>Recurrent Neural Networks seem to be very powerful learning models. But how powerful are they? Would they be able to learn how to add two decimal numbers? </p>
+<p>We trained an LSTM-RNN to predict the result of addition of two decimal numbers, which is almost the same problem as language modelling. In this case we ask the model to read a &ldquo;sentence&rdquo; character by character and try to tell what fits best into the missing space.</p>
+<blockquote>
+<p>123 + 19 = ____</p>
+</blockquote>
+<p>Here, the correct answer consists of 4 characters: &ldquo;1&rdquo;, &ldquo;4&rdquo;, &ldquo;2&rdquo;, and the end of sequence character. Surprisingly, an LSTM with small tweaks is able to learn with 99% accuracy how to add numbers of up to 9 digits.</p>
+<blockquote>
+<p>13828700 + 10188872 = 24017572</p>
+</blockquote>
+<p>Such a task involves learning about the carry operator, and how to add digits. On seeing this result, you might feel excited about how smart and powerful LSTM potentially is. However, deeper scrutiny reveals that LSTM is a cheater. Training it on sequences up to 9 digits gives good test performance on sequences up to 9 digits. Yet it fails on longer sequences of digits. This means that the LSTM hasn&rsquo;t learned the true algorithm behind number addition. Nonetheless, it did learn something about addition.</p>
+<p>We have examined what an LSTM can do on much harder problems. For example, can an LSTM simulate computer program execution? We used the same code used in our addition example with different examples. This time the input consists of a character-level representation of a program in a restricted subset of python, and the target output is the result of program execution. Our examples look like the following code snippets.</p>
+<pre><code class="python">c=142012
+for x in range(12):c-=166776
+print(c)
+</code></pre>
+
+<pre><code class="bash">target output: -1820700
+</code></pre>
+
+<p>Once again LSTM proved to be powerful enough to somewhat learn the mapping from programs to program execution results. Prediction performance is far from 100%, which is achievable by a standard python interpreter. However, the LSTM gives far better prediction than pure chance.</p>
+<p>How to make RNN-LSTM models even more powerful remains a research challenge. We bet that an LSTM which would be as powerful as a python interpreter should also be good for natural language processing tasks. The only difference between these tasks is the underlying language: Python vs. English!</p>
+<h2 id="learn-more-at-gtc-2015"><a name="user-content-learn-more-at-gtc-2015" href="#learn-more-at-gtc-2015" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>Learn More at GTC 2015</h2>
+<p>If you’re interested in learning more about Deep Learning with Torch, Soumith Chintala will be leading a <a href="http://devblogs.nvidia.com/parallelforall/learn-gpu-computing-with-hands-on-labs-gtc-2015/">hands-on lab</a> called &ldquo;<a href="http://registration.gputechconf.com/quicklink/ii4Mu3a">Applied Deep Learning for Vision, Natural Language and Audio with Torch7</a>&rdquo; at the 2015 GPU Technology Conference at 3:30PM Wednesday, March 18 in room 211A San Jose Convention Center (session S5574).</p>
+<p><em>With dozens of sessions on <a href="http://registration.gputechconf.com/quicklink/6kLCs63">Machine Learning and Deep Learning</a>, you’ll find that GTC is the place to learn about machine learning in 2015! Readers of Parallel Forall can use the discount code GM15PFAB to get 20% off any conference pass! <a href="http://www.gputechconf.com">Register Now!</a></em></p>
+<h4 id="references"><a name="user-content-references" href="#references" class="headeranchor-link" aria-hidden="true"><span class="headeranchor"></span></a>References</h4>
+<ol>
+<li>Bengio, Yoshua, et al. &ldquo;A neural probabilistic language model.&rdquo; The Journal of Machine Learning Research 3 (2003): 1137-1155.</li>
+<li>Collobert, Ronan, et al. &ldquo;Natural language processing (almost) from scratch.&rdquo; The Journal of Machine Learning Research 12 (2011): 2493-2537.</li>
+<li>Mikolov, Tomas, et al. &ldquo;Efficient estimation of word representations in vector space.&rdquo; arXiv preprint arXiv:1301.3781 (2013).</li>
+<li>Sutskever, Ilya, Oriol Vinyals, and Quoc VV Le. &ldquo;Sequence to sequence learning with neural networks.&rdquo; Advances in Neural Information Processing Systems. 2014.</li>
+<li>Zaremba, Wojciech, and Ilya Sutskever. &ldquo;Learning to execute.&rdquo; arXiv preprint arXiv:1410.4615 (2014).</li>
+<li>Hochreiter, Sepp, and Jürgen Schmidhuber. &ldquo;Long short-term memory.&rdquo; Neural computation 9.8 (1997): 1735-1780.</li>
+<li>Collobert, Ronan, Koray Kavukcuoglu, and Clément Farabet. &ldquo;Torch7: A matlab-like environment for machine learning.&rdquo; BigLearn, NIPS Workshop. No. EPFL-CONF-192376. 2011.</li>
+<li>Zaremba, Wojciech, Ilya Sutskever, and Oriol Vinyals. &ldquo;Recurrent neural network regularization.&rdquo; arXiv preprint arXiv:1409.2329 (2014).</li>
+<li><a href="http://torch.ch">http://torch.ch</a></li>
+<li><a href="https://github.com/wojzaremba/lstm">https://github.com/wojzaremba/lstm</a></li>
+<li><a href="https://github.com/wojciechz/learning_to_execute">https://github.com/wojciechz/learning_to_execute</a></li>
+</ol></article></body></html>
